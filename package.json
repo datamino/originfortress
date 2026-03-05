@@ -1,0 +1,35 @@
+{
+  "name": "origin-fortress",
+  "version": "0.9.0",
+  "description": "Security moat for AI agents. Runtime protection against prompt injection, tool misuse, and data exfiltration.",
+  "main": "src/index.js",
+  "bin": {
+    "origin-fortress": "bin/origin-fortress.js"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test test/*.test.js",
+    "lint": "eslint src/"
+  },
+  "keywords": [
+    "ai-security",
+    "agent-security",
+    "prompt-injection",
+    "guardrails",
+    "openclaw",
+    "llm-security",
+    "agentic-ai"
+  ],
+  "author": "Dar Fazulyanov",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/darfaz/origin-fortress"
+  },
+  "homepage": "https://origin-fortress.com",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

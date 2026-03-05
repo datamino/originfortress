@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Origin Fortress for Business — Your Team Deployed AI Agents. Do You Know What They Can Access?</title>
+<meta name="description" content="Enterprise AI agent security. We install Origin Fortress on your team's machines in under an hour — permission tiers, credential protection, audit trails, compliance reports. From $99/month.">
+<meta name="keywords" content="AI agent security enterprise, OpenClaw security business, AI agent compliance, agentic AI security, AI agent audit trail, enterprise AI governance">
+<link rel="canonical" href="https://origin-fortress.com/business/">
+
+<meta property="og:title" content="Your Team Deployed 20 AI Agents Last Month. Do You Know What They Can Access?">
+<meta property="og:description" content="Origin Fortress for Business — enterprise agent security installed in under an hour. Permission tiers, forbidden zones, full audit trails. From $99/month.">
+<meta property="og:image" content="https://origin-fortress.com/og-image.png">
+<meta property="og:url" content="https://origin-fortress.com/business/">
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Your Team Deployed 20 AI Agents Last Month. Do You Know What They Can Access?">
+<meta name="twitter:description" content="Enterprise AI agent security. Installed in under an hour. Permission tiers, credential protection, compliance reports.">
+<meta name="twitter:image" content="https://origin-fortress.com/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Origin Fortress for Business",
+  "description": "Enterprise AI agent security — remote installation, configuration, and ongoing monitoring for companies deploying AI agents on dedicated machines.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Origin Fortress"
+  },
+  "url": "https://origin-fortress.com/business/",
+  "offers": [
+    { "@type": "Offer", "name": "Starter", "price": "99", "priceCurrency": "USD", "description": "Up to 5 agent machines" },
+    { "@type": "Offer", "name": "Growth", "price": "249", "priceCurrency": "USD", "description": "Up to 25 agent machines" },
+    { "@type": "Offer", "name": "Scale", "price": "499", "priceCurrency": "USD", "description": "Up to 50 agent machines" }
+  ]
+}
+</script>
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏰</text></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0F172A;--navy-light:#1E293B;--navy-mid:#334155;--blue:#3B82F6;--emerald:#10B981;--white:#F8FAFC;--gray:#94A3B8;--red:#EF4444;--amber:#F59E0B;--orange:#F97316}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--navy);color:var(--white);line-height:1.6;overflow-x:hidden}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1040px;margin:0 auto;padding:0 24px}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,23,42,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(59,130,246,.15);padding:16px 0}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:1.25rem;font-weight:700;display:flex;align-items:center;gap:8px;color:var(--white)}
+.logo span{color:var(--emerald)}
+.logo img{height:44px;width:auto}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{color:var(--gray);font-size:.9rem;transition:color .2s}
+.nav-links a:hover{color:var(--white);text-decoration:none}
+.nav-links .btn-sm{color:var(--navy);background:var(--emerald);padding:6px 28px;border-radius:20px;font-weight:600;font-size:.85rem;white-space:nowrap}
+
+/* Hero */
+.hero{padding:160px 0 100px;text-align:center;position:relative}
+.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(59,130,246,.1) 0%,transparent 70%);pointer-events:none}
+.hero h1{font-size:clamp(2.2rem,5vw,3.2rem);font-weight:800;line-height:1.15;margin-bottom:24px;letter-spacing:-.02em;max-width:800px;margin-left:auto;margin-right:auto}
+.hero h1 .highlight{background:linear-gradient(135deg,var(--blue),var(--emerald));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:1.15rem;color:var(--gray);max-width:640px;margin:0 auto 40px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:10px;font-weight:600;font-size:1rem;transition:all .2s;border:none;cursor:pointer}
+.btn-primary{background:var(--emerald);color:#fff}
+.btn-primary:hover{background:#059669;text-decoration:none}
+.btn-outline{background:transparent;color:var(--white);border:1.5px solid var(--navy-mid)}
+.btn-outline:hover{border-color:var(--blue);text-decoration:none}
+
+/* Sections */
+section{padding:80px 0}
+.section-label{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--emerald);margin-bottom:12px}
+.section-title{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:700;margin-bottom:16px;letter-spacing:-.02em}
+.section-sub{color:var(--gray);font-size:1.05rem;max-width:600px;margin-bottom:40px}
+
+/* Problem cards */
+.problem{background:var(--navy-light)}
+.problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.p-card{background:var(--navy);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:28px;transition:border-color .2s}
+.p-card:hover{border-color:var(--red)}
+.p-card .icon{font-size:2rem;margin-bottom:12px}
+.p-card h3{font-size:1.05rem;margin-bottom:8px}
+.p-card p{color:var(--gray);font-size:.9rem}
+
+/* Steps */
+.steps{counter-reset:step}
+.step{display:flex;gap:24px;align-items:flex-start;margin-bottom:40px}
+.step-num{counter-increment:step;width:48px;height:48px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;flex-shrink:0}
+.step-num::before{content:counter(step)}
+.step h3{font-size:1.1rem;margin-bottom:4px}
+.step p{color:var(--gray);font-size:.9rem}
+
+/* Pricing */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.price-card{background:var(--navy-light);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:28px;display:flex;flex-direction:column}
+.price-card.popular{border-color:var(--blue);position:relative}
+.price-card.popular::before{content:'Most Popular';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;padding:4px 16px;border-radius:20px;font-size:.75rem;font-weight:700}
+.price-card h3{font-size:1.1rem;margin-bottom:4px}
+.price-card .price{font-size:2.5rem;font-weight:800;margin:12px 0 4px}
+.price-card .period{color:var(--gray);font-size:.85rem}
+.price-card ul{list-style:none;margin:20px 0;flex:1}
+.price-card li{padding:5px 0;font-size:.9rem;color:var(--gray)}
+.price-card li::before{content:'✓ ';color:var(--emerald);font-weight:700}
+.price-card .btn{width:100%;justify-content:center;margin-top:auto}
+
+/* Guarantee */
+.guarantee{background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(59,130,246,.08));border:1px solid rgba(16,185,129,.2);border-radius:14px;padding:40px;text-align:center;max-width:700px;margin:0 auto}
+
+/* Form */
+.intake-form{background:var(--navy-light);border:1px solid rgba(59,130,246,.2);border-radius:14px;padding:40px;max-width:600px;margin:0 auto}
+.intake-form label{display:block;font-size:.85rem;font-weight:600;margin-bottom:6px;color:var(--gray)}
+.intake-form input,.intake-form select,.intake-form textarea{width:100%;padding:12px 16px;border-radius:8px;border:1px solid var(--navy-mid);background:var(--navy);color:var(--white);font-size:.95rem;margin-bottom:20px}
+.intake-form input:focus,.intake-form select:focus,.intake-form textarea:focus{outline:none;border-color:var(--blue)}
+.intake-form textarea{min-height:80px;resize:vertical}
+.intake-form .btn{width:100%;justify-content:center}
+
+/* Comparison */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:800px;margin:0 auto}
+@media(max-width:600px){.compare{grid-template-columns:1fr}}
+.compare-card{border-radius:14px;padding:28px}
+.compare-card h3{font-size:1.1rem;margin-bottom:16px}
+.compare-card ul{list-style:none}
+.compare-card li{padding:5px 0;font-size:.9rem}
+.compare-bad{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2)}
+.compare-bad li::before{content:'✗ ';color:var(--red);font-weight:700}
+.compare-good{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2)}
+.compare-good li::before{content:'✓ ';color:var(--emerald);font-weight:700}
+
+/* Logos / trust */
+.trust-bar{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;align-items:center;opacity:.7;margin-top:40px;font-size:.85rem;color:var(--gray)}
+.trust-bar span{display:flex;align-items:center;gap:6px}
+
+/* Responsive */
+@media(max-width:768px){
+  .hero{padding:120px 0 60px}
+  .nav-links{display:none}
+  section{padding:60px 0}
+  .step{flex-direction:column;gap:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+<div class="container">
+  <a href="/" class="logo">🏰 Claw<span>Moat</span></a>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+  <div class="nav-links">
+    <a href="/">Security</a>
+    <a href="/services/">AI Agents</a>
+    <a href="/blog/">Blog</a>
+    <a href="https://github.com/darfaz/origin-fortress">GitHub ↗</a>
+  </div>
+</div>
+</nav>
+
+<!-- HERO — Schwartz Stage 5: Identification headline. CISOs don't know Origin Fortress. Don't mention product. Echo their state of mind. -->
+<section class="hero">
+<div class="container">
+  <div style="display:inline-block;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);border-radius:20px;padding:6px 16px;font-size:.85rem;color:var(--red);margin-bottom:24px">⚠️ <a href="https://www.microsoft.com/en-us/security/blog/2026/02/19/running-openclaw-safely-identity-isolation-runtime-risk/" style="color:var(--red)">Microsoft says</a> "not appropriate for enterprise workstations" · 135K exposed instances · 341+ malicious skills</div>
+  <h1>Your team deployed AI agents last month.<br><span class="highlight">Do you know what they can access?</span></h1>
+  <p>SSH keys. AWS credentials. Customer databases. Browser sessions. Every AI agent on your network has the same access as the employee who installed it — with none of the accountability. We fix that in under an hour.</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+    <a href="#contact" class="btn btn-primary">Get a Security Assessment →</a>
+    <a href="#how" class="btn btn-outline">See How It Works</a>
+    <a href="/business/install.html" class="btn btn-outline" style="border-color:var(--emerald);color:var(--emerald)">⚡ Self-Install in 60s</a>
+  </div>
+  <div class="trust-bar">
+    <span>🔬 Based on <a href="https://arxiv.org/abs/2501.13011" style="color:var(--gray)">Anthropic research</a></span>
+    <span>📊 Mapped to <a href="https://genai.owasp.org/" style="color:var(--gray)">OWASP Agentic AI 2026</a></span>
+    <span>📦 MIT Open Source</span>
+    <span>⚡ Zero Dependencies</span>
+  </div>
+</div>
+</section>
+
+<!-- PROBLEM — Schwartz: Intensify the desire. Make the CISO feel the risk in their gut. -->
+<section class="problem" id="problem">
+<div class="container">
+  <div class="section-label">The Risk You're Not Measuring</div>
+  <h2 class="section-title">Every AI agent is an unmonitored employee with admin access</h2>
+  <p class="section-sub">Your security stack covers endpoints, networks, and cloud. But who's watching the AI agent that just read your entire ~/.aws directory?</p>
+  <div class="problem-grid">
+    <div class="p-card">
+      <div class="icon">🔓</div>
+      <h3>Credential Theft</h3>
+      <p>Researchers built a weather skill that exfiltrates SSH keys and API tokens. It passed every review. Your agents install skills from a public marketplace with no signature verification.</p>
+    </div>
+    <div class="p-card">
+      <div class="icon">💉</div>
+      <h3>Prompt Injection at Scale</h3>
+      <p>A single poisoned email can hijack an agent's behavior. Cisco found the leading agent platform "fails decisively" against injection. Your agents process hundreds of external inputs per day.</p>
+    </div>
+    <div class="p-card">
+      <div class="icon">👻</div>
+      <h3>Zero Audit Trail</h3>
+      <p>If an agent exfiltrates data right now, you have no log, no alert, and no way to know it happened. There is no native identity or access control system for AI agents.</p>
+    </div>
+    <div class="p-card">
+      <div class="icon">📋</div>
+      <h3>Compliance Gap</h3>
+      <p>SOC 2 requires access controls and audit trails for all systems that touch sensitive data. Your AI agents touch everything — and none of it is logged.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- WHAT WE DO — Schwartz Stage 3: Lead with the MECHANISM, not the claim -->
+<section id="solution">
+<div class="container">
+  <div class="section-label">The Mechanism</div>
+  <h2 class="section-title">Four permission tiers between your agent and your machine</h2>
+  <p class="section-sub">Origin Fortress sits between the AI agent and the operating system. Every file read, shell command, and network request is validated against your policy — in real time, in under 1ms.</p>
+
+  <div class="compare" style="margin-bottom:48px">
+    <div class="compare-card compare-bad">
+      <h3>❌ Without Origin Fortress</h3>
+      <ul>
+        <li>Agent reads ~/.ssh/id_rsa — no one knows</li>
+        <li>Malicious skill runs curl to exfiltrate tokens</li>
+        <li>No audit trail of agent actions</li>
+        <li>No permission boundaries</li>
+        <li>Compliance team has no visibility</li>
+        <li>Incident response starts from zero</li>
+      </ul>
+    </div>
+    <div class="compare-card compare-good">
+      <h3>✅ With Origin Fortress</h3>
+      <ul>
+        <li>SSH keys in forbidden zone — blocked + logged</li>
+        <li>Egress to unknown domains — blocked + alerted</li>
+        <li>Full audit trail of every action</li>
+        <li>4 permission tiers (observer → full)</li>
+        <li>Compliance reports for SOC 2, ISO 27001</li>
+        <li>Incident forensics in 30 seconds</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- HOW IT WORKS — Schwartz: Gradualization. Walk them through the process step by step. -->
+<section style="background:var(--navy-light)" id="how">
+<div class="container">
+  <div class="section-label">Remote Setup</div>
+  <h2 class="section-title">Installed on your machines in under an hour. By us.</h2>
+  <p class="section-sub">You don't need to learn a new tool. We handle everything — you just provide access.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num"></div>
+      <div>
+        <h3>You give us access</h3>
+        <p>SSH, Tailscale, TeamViewer, or any remote access you already use. We need a user account on each agent machine — that's it.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num"></div>
+      <div>
+        <h3>We run the installer</h3>
+        <p>Our setup script detects your OS (macOS/Linux/WSL), creates a locked-down agent user account, installs Origin Fortress, and applies your hardened config. Takes ~10 minutes per machine.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num"></div>
+      <div>
+        <h3>We configure your policy</h3>
+        <p>Permission tier, forbidden zones, allowed domains, alert channels (Slack, email, webhook), and audit log destinations. Customized to your security requirements.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num"></div>
+      <div>
+        <h3>You get a security report</h3>
+        <p>Within 24 hours: a full audit of what your agents currently have access to, what we've locked down, and your OWASP Agentic AI compliance status. Then ongoing monitoring kicks in.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section>
+<div class="container">
+  <div class="section-label">What You Get</div>
+  <h2 class="section-title">Not just software. A security layer that's managed for you.</h2>
+  <p class="section-sub">Open source Origin Fortress is free. The business plan adds installation, configuration, monitoring, and compliance — so your team doesn't have to.</p>
+
+  <div class="problem-grid">
+    <div class="p-card" style="border-color:rgba(16,185,129,.2)">
+      <div class="icon">🛡️</div>
+      <h3>Host Guardian</h3>
+      <p>4 permission tiers, 20+ forbidden zones, dangerous command blocking. Your agent can only do what you explicitly allow.</p>
+    </div>
+    <div class="p-card" style="border-color:rgba(16,185,129,.2)">
+      <div class="icon">📊</div>
+      <h3>Audit Trail</h3>
+      <p>Every file access, shell command, and network request logged. Searchable, exportable, and ready for your compliance team.</p>
+    </div>
+    <div class="p-card" style="border-color:rgba(16,185,129,.2)">
+      <div class="icon">🚨</div>
+      <h3>Real-Time Alerts</h3>
+      <p>Slack, email, or webhook notifications when an agent hits a forbidden zone, attempts a blocked command, or matches a threat pattern.</p>
+    </div>
+    <div class="p-card" style="border-color:rgba(16,185,129,.2)">
+      <div class="icon">🔍</div>
+      <h3>Skill Integrity</h3>
+      <p>Hash-based verification of every installed skill. Know immediately if a skill has been tampered with or contains suspicious patterns.</p>
+    </div>
+    <div class="p-card" style="border-color:rgba(16,185,129,.2)">
+      <div class="icon">🌐</div>
+      <h3>Network Egress Control</h3>
+      <p>Domain allow/blocklists. See exactly where your agents send data. Block exfiltration to unknown endpoints automatically.</p>
+    </div>
+    <div class="p-card" style="border-color:rgba(16,185,129,.2)">
+      <div class="icon">📋</div>
+      <h3>Compliance Reports</h3>
+      <p>Pre-built reports for SOC 2, ISO 27001, and OWASP Agentic AI 2026. Map your agent security posture to frameworks your auditors already know.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PRICING — Schwartz: At Stage 2, lead with the direct claim, enlarged. -->
+<section style="background:var(--navy-light)" id="pricing">
+<div class="container">
+  <div class="section-label">Pricing</div>
+  <h2 class="section-title">Less than the cost of one security incident.</h2>
+  <p class="section-sub">Setup fee covers installation and hardening. Monthly covers monitoring, alerts, updates, and support. Cancel anytime.</p>
+
+  <div class="pricing-grid">
+    <div class="price-card">
+      <h3>Starter</h3>
+      <p style="color:var(--gray);font-size:.85rem">Up to 5 agent machines</p>
+      <div class="price" style="color:var(--emerald)">$99<span style="font-size:1rem;font-weight:400;color:var(--gray)">/mo</span></div>
+      <p class="period">+ $500 one-time setup</p>
+      <ul>
+        <li>Remote installation on up to 5 machines</li>
+        <li>Hardened config per machine</li>
+        <li>Permission tiers + forbidden zones</li>
+        <li>Email + Slack alerts</li>
+        <li>Monthly compliance report</li>
+        <li>Email support (24h response)</li>
+      </ul>
+      <a href="#contact" class="btn btn-outline">Get Started</a>
+    </div>
+
+    <div class="price-card popular">
+      <h3>Growth</h3>
+      <p style="color:var(--gray);font-size:.85rem">Up to 25 agent machines</p>
+      <div class="price" style="color:var(--emerald)">$249<span style="font-size:1rem;font-weight:400;color:var(--gray)">/mo</span></div>
+      <p class="period">+ $1,000 one-time setup</p>
+      <ul>
+        <li>Everything in Starter</li>
+        <li>Up to 25 machines</li>
+        <li>Centralized policy management</li>
+        <li>Webhook + custom alert channels</li>
+        <li>Weekly compliance reports</li>
+        <li>Dedicated Slack channel support</li>
+        <li>Quarterly security review call</li>
+      </ul>
+      <a href="#contact" class="btn btn-primary">Get Started</a>
+    </div>
+
+    <div class="price-card">
+      <h3>Scale</h3>
+      <p style="color:var(--gray);font-size:.85rem">Up to 50 agent machines</p>
+      <div class="price" style="color:var(--emerald)">$499<span style="font-size:1rem;font-weight:400;color:var(--gray)">/mo</span></div>
+      <p class="period">+ $2,000 one-time setup</p>
+      <ul>
+        <li>Everything in Growth</li>
+        <li>Up to 50 machines</li>
+        <li>Inter-agent message scanning</li>
+        <li>Custom policy engine rules</li>
+        <li>Real-time compliance dashboard</li>
+        <li>Priority support (4h response)</li>
+        <li>Monthly security review call</li>
+      </ul>
+      <a href="#contact" class="btn btn-outline">Get Started</a>
+    </div>
+  </div>
+
+  <p style="text-align:center;color:var(--gray);font-size:.85rem;margin-top:24px">50+ machines? <a href="#contact">Contact us</a> for Enterprise pricing with custom SLAs, on-prem options, and dedicated support.</p>
+</div>
+</section>
+
+<!-- GUARANTEE -->
+<section>
+<div class="container">
+  <div class="guarantee">
+    <div style="font-size:2.5rem;margin-bottom:16px">🛡️</div>
+    <h2 style="font-size:1.5rem;font-weight:700;margin-bottom:12px">30-Day Money-Back Guarantee</h2>
+    <p style="color:var(--gray);max-width:500px;margin:0 auto">If Origin Fortress doesn't reduce your agent security risk measurably within 30 days, we'll refund your setup fee and first month. No questions asked.</p>
+  </div>
+</div>
+</section>
+
+<!-- SOCIAL PROOF — Schwartz: Identification. Show them people like them. -->
+<section style="background:var(--navy-light)">
+<div class="container" style="text-align:center">
+  <div class="section-label">Who This Is For</div>
+  <h2 class="section-title" style="max-width:700px;margin:0 auto 40px">Teams that use AI agents and take security seriously</h2>
+  <div class="problem-grid" style="text-align:left">
+    <div class="p-card" style="border-color:rgba(59,130,246,.2)">
+      <div class="icon">🏢</div>
+      <h3>Engineering Teams</h3>
+      <p>Your devs use OpenClaw, Claude Code, or Cursor on company laptops. They have access to production credentials. You need guardrails without slowing them down.</p>
+    </div>
+    <div class="p-card" style="border-color:rgba(59,130,246,.2)">
+      <div class="icon">🔒</div>
+      <h3>Security Teams</h3>
+      <p>You can see endpoints, cloud, and network. But AI agents are a blind spot. You need visibility and control before your next audit.</p>
+    </div>
+    <div class="p-card" style="border-color:rgba(59,130,246,.2)">
+      <div class="icon">📊</div>
+      <h3>Compliance Officers</h3>
+      <p>SOC 2, ISO 27001, and OWASP Agentic AI 2026 all require access controls and audit trails for systems touching sensitive data. Your agents have neither.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FAQ — Schwartz: Overcome objections before they form -->
+<section id="faq">
+<div class="container" style="max-width:700px">
+  <div class="section-label" style="text-align:center">FAQ</div>
+  <h2 class="section-title" style="text-align:center;margin-bottom:40px">Questions security teams ask</h2>
+
+  <div style="margin-bottom:32px">
+    <h3 style="font-size:1.05rem;margin-bottom:8px">Will this slow down our agents?</h3>
+    <p style="color:var(--gray);font-size:.9rem">No. Origin Fortress validates actions in under 1ms. Zero dependencies means no supply chain bloat. Your agents won't notice it's there — until it blocks something dangerous.</p>
+  </div>
+  <div style="margin-bottom:32px">
+    <h3 style="font-size:1.05rem;margin-bottom:8px">Is this open source? Can we audit it?</h3>
+    <p style="color:var(--gray);font-size:.9rem">100% open source, MIT licensed, on <a href="https://github.com/darfaz/origin-fortress">GitHub</a>. 142 tests passing, zero dependencies. The business plan adds managed installation and monitoring — the security engine itself is fully auditable.</p>
+  </div>
+  <div style="margin-bottom:32px">
+    <h3 style="font-size:1.05rem;margin-bottom:8px">What agent platforms do you support?</h3>
+    <p style="color:var(--gray);font-size:.9rem">Any Node.js-based agent: OpenClaw, Claude Code, custom LangChain/LlamaIndex deployments. If it runs on macOS, Linux, or WSL, we can protect it.</p>
+  </div>
+  <div style="margin-bottom:32px">
+    <h3 style="font-size:1.05rem;margin-bottom:8px">What access do you need to our machines?</h3>
+    <p style="color:var(--gray);font-size:.9rem">SSH or any remote access tool (Tailscale, TeamViewer). We create a dedicated agent user account, install Origin Fortress, apply the config, and hand it back. We don't need ongoing access unless you want managed monitoring.</p>
+  </div>
+  <div style="margin-bottom:32px">
+    <h3 style="font-size:1.05rem;margin-bottom:8px">Can we self-install instead?</h3>
+    <p style="color:var(--gray);font-size:.9rem">Absolutely. Origin Fortress is free and open source. The business plans are for teams that want professional installation, hardened configs, ongoing monitoring, and compliance reports without doing it themselves.</p>
+  </div>
+  <div style="margin-bottom:32px">
+    <h3 style="font-size:1.05rem;margin-bottom:8px">How does this compare to LlamaFirewall or Lakera?</h3>
+    <p style="color:var(--gray);font-size:.9rem">They protect the model layer (prompt filtering, guardrails). We protect the host layer (file system, credentials, shell commands). They're complementary — we recommend using both. <a href="/blog/origin-fortress-vs-llamafirewall-nemo-guardrails.html">See the full comparison →</a></p>
+  </div>
+</div>
+</section>
+
+<!-- CTA / CONTACT FORM — Schwartz: Remove all friction. Make taking action feel inevitable. -->
+<section style="background:var(--navy-light)" id="contact">
+<div class="container" style="text-align:center">
+  <div class="section-label">Get Started</div>
+  <h2 class="section-title" style="max-width:700px;margin:0 auto 12px">Your agents are running right now.<br>Find out what they can access.</h2>
+  <p style="color:var(--gray);max-width:500px;margin:0 auto 40px">Free security assessment. We'll audit one machine and show you exactly what your agents have access to — no commitment, no sales pitch.</p>
+
+  <form class="intake-form" action="mailto:hello@origin-fortress.com" method="POST" enctype="text/plain">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 20px">
+      <div>
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required placeholder="Jane Smith">
+      </div>
+      <div>
+        <label for="email">Work Email</label>
+        <input type="email" id="email" name="email" required placeholder="jane@company.com">
+      </div>
+    </div>
+    <label for="company">Company</label>
+    <input type="text" id="company" name="company" placeholder="Acme Corp">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 20px">
+      <div>
+        <label for="agents">How many AI agents?</label>
+        <select id="agents" name="agents">
+          <option value="1-5">1–5</option>
+          <option value="6-25">6–25</option>
+          <option value="26-50">26–50</option>
+          <option value="50+">50+</option>
+        </select>
+      </div>
+      <div>
+        <label for="platform">Agent Platform</label>
+        <select id="platform" name="platform">
+          <option value="openclaw">OpenClaw</option>
+          <option value="claude-code">Claude Code</option>
+          <option value="custom">Custom / Other</option>
+          <option value="multiple">Multiple</option>
+        </select>
+      </div>
+    </div>
+    <label for="details">Anything else we should know?</label>
+    <textarea id="details" name="details" placeholder="Current security concerns, compliance requirements, deployment details..."></textarea>
+    <button type="submit" class="btn btn-primary">Get Your Free Security Assessment →</button>
+    <p style="color:var(--gray);font-size:.75rem;margin-top:12px">We'll respond within 24 hours. No spam, no auto-sequences.</p>
+  </form>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<div class="container">
+  <div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:16px">
+    <a href="https://github.com/darfaz/origin-fortress" style="color:var(--gray)">GitHub</a>
+    <a href="https://www.npmjs.com/package/origin-fortress" style="color:var(--gray)">npm</a>
+    <a href="/blog/" style="color:var(--gray)">Blog</a>
+    <a href="mailto:hello@origin-fortress.com" style="color:var(--gray)">hello@origin-fortress.com</a>
+  </div>
+  <p style="text-align:center;color:var(--gray);font-size:.85rem">© 2026 Origin Fortress</p>
+</div>
+</footer>
+
+</body>
+</html>

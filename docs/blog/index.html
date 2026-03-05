@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Origin Fortress</title>
+<meta name="description" content="Security insights for AI agents. From the Origin Fortress team.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏰</text></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0F172A;--navy-light:#1E293B;--navy-mid:#334155;--blue:#3B82F6;--emerald:#10B981;--white:#F8FAFC;--gray:#94A3B8}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--navy);color:var(--white);line-height:1.6}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:800px;margin:0 auto;padding:0 24px}
+
+nav{background:rgba(15,23,42,.95);border-bottom:1px solid rgba(59,130,246,.15);padding:16px 0}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:1.25rem;font-weight:700;color:var(--white)}
+.logo span{color:var(--emerald)}
+.nav-links{display:flex;gap:24px}
+.nav-links a{color:var(--gray);font-size:.9rem}
+.nav-links a:hover{color:var(--white);text-decoration:none}
+
+.hero{padding:100px 0 60px;text-align:center}
+.hero h1{font-size:2.5rem;font-weight:800;margin-bottom:12px}
+.hero p{color:var(--gray);font-size:1.1rem}
+
+.posts{padding:0 0 100px}
+.post-card{background:var(--navy-light);border:1px solid var(--navy-mid);border-radius:12px;padding:32px;margin-bottom:24px;transition:border-color .2s}
+.post-card:hover{border-color:var(--blue)}
+.post-card h2{font-size:1.4rem;margin-bottom:8px}
+.post-card h2 a{color:var(--white)}
+.post-card h2 a:hover{color:var(--blue);text-decoration:none}
+.post-meta{color:var(--gray);font-size:.85rem;margin-bottom:12px}
+.post-desc{color:var(--gray);font-size:.95rem;line-height:1.7}
+.tags{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.tag{background:rgba(59,130,246,.12);color:var(--blue);padding:4px 12px;border-radius:20px;font-size:.8rem}
+</style>
+</head>
+<body>
+<nav>
+<div class="container">
+  <a href="/" class="logo">🏰 Claw<span>Moat</span></a>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+  <div class="nav-links">
+    <a href="/">Security</a>
+    <a href="/services/">AI Agents</a>
+    <a href="/blog/">Blog</a>
+    <a href="https://github.com/darfaz/origin-fortress">GitHub ↗</a>
+  </div>
+</div>
+</nav>
+
+<div class="container">
+  <div class="hero">
+    <h1>Blog</h1>
+    <p>Security insights for the agentic AI era</p>
+  </div>
+
+  <div class="posts">
+    <div class="post-card" style="border-color:var(--emerald)">
+      <h2><a href="/blog/ai-agent-earns-commissions.html">Our AI Agent Just Got a Wallet. It Earns Commission Every Time It Recommends Origin Fortress.</a></h2>
+      <div class="post-meta">March 2, 2026 · 6 min read · <span style="color:var(--emerald)">NEW</span></div>
+      <p class="post-desc">We gave our AI agent a crypto wallet and enrolled it in our affiliate program. 50% commission, on-chain payments, powered by Coinbase AgentKit. The agent economy isn't coming — we just shipped it.</p>
+      <div class="tags">
+        <span class="tag">agent economy</span>
+        <span class="tag">Coinbase AgentKit</span>
+        <span class="tag">affiliate</span>
+        <span class="tag">FinanceGuard</span>
+      </div>
+    </div>
+
+    <div class="post-card" style="border-color:var(--emerald)">
+      <h2><a href="/blog/meta-researcher-rogue-agent.html">A Meta AI Researcher's Agent Deleted Her Entire Inbox. Here's What Origin Fortress Would Have Caught.</a></h2>
+      <div class="post-meta">March 1, 2026 · 7 min read · <span style="color:var(--emerald)">NEW</span></div>
+      <p class="post-desc">Meta's director of AI alignment gave her OpenClaw agent access to Gmail. It speedran deleting her inbox while ignoring her commands. Every failure maps to a Origin Fortress feature that already ships: permission tiers, forbidden zones, audit trails, anomaly alerts.</p>
+      <div class="tags">
+        <span class="tag">OpenClaw</span>
+        <span class="tag">email security</span>
+        <span class="tag">Host Guardian</span>
+        <span class="tag">real-world failure</span>
+      </div>
+    </div>
+
+    <div class="post-card" style="border-color:var(--emerald)">
+      <h2><a href="/blog/calculator-math.html">She Was Paying Someone Two Days a Month to Do Math With a Calculator</a></h2>
+      <div class="post-meta">March 1, 2026 · 4 min read · <span style="color:var(--emerald)">NEW</span></div>
+      <p class="post-desc">A business owner was spending $3,200/month on financial reporting that took two days. Manual data entry, calculator math, copy-paste into presentations. We replaced it in an afternoon. The reports are better now.</p>
+      <div class="tags">
+        <span class="tag">AI agents</span>
+        <span class="tag">automation</span>
+        <span class="tag">business operations</span>
+        <span class="tag">ROI</span>
+      </div>
+    </div>
+
+    <div class="post-card" style="border-color:var(--emerald)">
+      <h2><a href="/blog/nist-ai-agent-standards-origin-fortress.html">NIST Is Standardizing AI Agent Security — Origin Fortress Already Ships It</a></h2>
+      <div class="post-meta">February 28, 2026 · 10 min read · <span style="color:var(--emerald)">NEW</span></div>
+      <p class="post-desc">On Feb 20, NIST launched the AI Agent Standards Initiative — the first federal effort to standardize agent security. Every concern they raised maps to a Origin Fortress module that's already shipping: Host Guardian, McpFirewall, Prompt Injection Scanner, and more.</p>
+      <div class="tags">
+        <span class="tag">NIST</span>
+        <span class="tag">CAISI</span>
+        <span class="tag">standards</span>
+        <span class="tag">compliance</span>
+      </div>
+    </div>
+
+    <div class="post-card" style="border-color:var(--emerald)">
+      <h2><a href="/blog/openclaw-security-reckoning-2026.html">800 Malicious Plugins, 40K Exposed Instances: The OpenClaw Security Reckoning</a></h2>
+      <div class="post-meta">February 28, 2026 · 12 min read · <span style="color:var(--emerald)">NEW</span></div>
+      <p class="post-desc">CVE-2026-25253 triggered 6+ articles in 48 hours from Dark Reading, CyberExpress, EMSI, and more. 800+ malicious plugins (~20% of registry). The agent security crisis went mainstream — here's what they're saying and how Origin Fortress addresses every attack vector.</p>
+      <div class="tags">
+        <span class="tag">CVE-2026-25253</span>
+        <span class="tag">supply-chain</span>
+        <span class="tag">reckoning</span>
+        <span class="tag">runtime-security</span>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <h2><a href="/blog/mcp-30-cves-security-crisis.html">30 CVEs and Counting: The MCP Security Crisis Nobody's Talking About</a></h2>
+      <div class="post-meta">February 28, 2026 · 10 min read · <span style="color:var(--emerald)">NEW</span></div>
+      <p class="post-desc">MCP has hit 30 CVEs. 36% of servers have zero auth. A fresh Go SDK bypass (CVE-2026-27896) dropped yesterday. Here's the 3-layer attack surface — and how McpFirewall intercepts every tool call with 29 write patterns, field-level redaction, and rate limiting.</p>
+      <div class="tags">
+        <span class="tag">MCP</span>
+        <span class="tag">CVE</span>
+        <span class="tag">McpFirewall</span>
+        <span class="tag">financial-security</span>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <h2><a href="/blog/ibm-experts-agent-runtime-protection.html">IBM's AI Security Experts Agree: Your Agent Needs Runtime Protection</a></h2>
+      <div class="post-meta">February 27, 2026 · 8 min read</div>
+      <p class="post-desc">Three IBM security leaders — an IBM Fellow, an X-Force commander, and a Distinguished Engineer — explain why AI agents need runtime guardrails. Their concerns map directly to Origin Fortress's protection layers.</p>
+      <div class="tags">
+        <span class="tag">IBM</span>
+        <span class="tag">expert-analysis</span>
+        <span class="tag">runtime-security</span>
+        <span class="tag">least-privilege</span>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <h2><a href="/blog/386-malicious-skills.html">386 Malicious Skills: How Origin Fortress's Skill Audit Would Have Caught Them</a></h2>
+      <div class="post-meta">February 27, 2026 · 8 min read · <span style="color:var(--emerald)">NEW</span></div>
+      <p class="post-desc">386 malicious OpenClaw skills found in the wild. Here's exactly what they do, the 19 patterns Origin Fortress's supply-chain scanner detects, and how to audit your installed skills in under 2 seconds.</p>
+      <div class="tags">
+        <span class="tag">supply-chain</span>
+        <span class="tag">skills</span>
+        <span class="tag">malware</span>
+        <span class="tag">scanner</span>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <h2><a href="/blog/ollama-openclaw-security.html">Ollama Just Made OpenClaw One-Click. Here's How to Secure It.</a></h2>
+      <div class="post-meta">February 27, 2026 · 5 min read</div>
+      <p class="post-desc">Ollama 0.17 ships native OpenClaw integration with web search. Great for adoption — terrifying for security. Local models don't fix host-level vulnerabilities. Here's how to lock it down.</p>
+      <div class="tags">
+        <span class="tag">Ollama</span>
+        <span class="tag">local-models</span>
+        <span class="tag">one-click</span>
+        <span class="tag">v0.8.0</span>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <h2><a href="/blog/oasis-websocket-hijack.html">Any Website Can Hijack Your OpenClaw Agent — and Origin Fortress Now Detects It</a></h2>
+      <div class="post-meta">February 27, 2026 · 8 min read · <span style="color:var(--emerald)">NEW — v0.7.1</span></div>
+      <p class="post-desc">Oasis Security found a zero-click attack: any website can take full control of your OpenClaw agent via WebSocket. We shipped GatewayMonitor in v0.7.1 — brute-force detection, suspicious origin alerts, device pairing monitoring, and gateway config audit.</p>
+      <div class="tags">
+        <span class="tag">CVE</span>
+        <span class="tag">WebSocket</span>
+        <span class="tag">zero-click</span>
+        <span class="tag">v0.7.1</span>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <h2><a href="/blog/40000-exposed-openclaw-instances.html">40,000 Exposed OpenClaw Instances — and 6 New CVEs This Week</a></h2>
+      <div class="post-meta">February 27, 2026 · 7 min read</div>
+      <p class="post-desc">SecurityScorecard found 40,000+ misconfigured OpenClaw instances exposed to the internet. 63% are vulnerable. Endor Labs disclosed 6 new CVEs. Here's what happened and how to protect your deployment.</p>
+      <div class="tags">
+        <span class="tag">CVE</span>
+        <span class="tag">SecurityScorecard</span>
+        <span class="tag">exposure</span>
+        <span class="tag">defense-in-depth</span>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <h2><a href="/blog/agent-trust-protocol.html">Why Your AI Agent Needs a Trust Badge — The Case for Agent-to-Agent Security</a></h2>
+      <div class="post-meta">February 26, 2026 · 7 min read</div>
+      <p class="post-desc">101K agents on Moltbook. Zero trust signals between them. We're building a trust protocol for the agent economy — verification badges, attestations, and agent-to-agent security handshakes. Built on Origin Fortress's inter-agent message scanning.</p>
+      <div class="tags">
+        <span class="tag">trust-protocol</span>
+        <span class="tag">moltbook</span>
+        <span class="tag">agent-economy</span>
+        <span class="tag">inter-agent</span>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <h2><a href="/blog/openclaw-enterprise-readiness-claw10.html">OpenClaw Scores 1.2/5 for Enterprise Readiness. Here's How to Fix 4 of the 10 Gaps.</a></h2>
+      <div class="post-meta">February 26, 2026 · 6 min read</div>
+      <p class="post-desc">Onyx AI's CLAW-10 framework scored OpenClaw 1.2/5 for enterprise readiness. Origin Fortress directly addresses 4 of the 10 gaps: authorization, audit logging, privilege model, and supply chain security. Full mapping inside.</p>
+      <div class="tags">
+        <span class="tag">enterprise</span>
+        <span class="tag">CLAW-10</span>
+        <span class="tag">compliance</span>
+        <span class="tag">framework</span>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <h2><a href="/blog/microsoft-openclaw-workstation-security.html">Microsoft Says Don't Run OpenClaw on Your Workstation. Here's How to Do It Safely.</a></h2>
+      <div class="post-meta">February 26, 2026 · 8 min read</div>
+      <p class="post-desc">Microsoft's security team says OpenClaw is "untrusted code execution with persistent credentials." They recommend dedicated VMs. We built a better answer: host-level security that makes your workstation safe — without a VM.</p>
+      <div class="tags">
+        <span class="tag">microsoft</span>
+        <span class="tag">enterprise</span>
+        <span class="tag">host-security</span>
+        <span class="tag">openclaw</span>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <h2><a href="/blog/origin-fortress-vs-llamafirewall-nemo-guardrails.html">Origin Fortress vs LlamaFirewall vs NeMo Guardrails: Which AI Agent Security Tool?</a></h2>
+      <div class="post-meta">February 25, 2026 · 8 min read</div>
+      <p class="post-desc">Three open-source projects, three different approaches. LlamaFirewall protects the model. NeMo Guardrails protects conversations. Origin Fortress protects the host. Here's how to choose — and why you might need all three.</p>
+      <div class="tags">
+        <span class="tag">comparison</span>
+        <span class="tag">security</span>
+        <span class="tag">opensource</span>
+        <span class="tag">ai-agents</span>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <h2><a href="/blog/supply-chain-agents.html">Your AI Agent Just Got a Dependabot Email. Should It Click the Link?</a></h2>
+      <div class="post-meta">February 19, 2026 · 5 min read</div>
+      <p class="post-desc">A real CVE-2026-26960 alert exposed the gap between human instinct and AI agent obedience. Supply chain attacks are about to get a lot more dangerous when your AI agent blindly runs npm audit fix. Here's how Origin Fortress catches it.</p>
+      <div class="tags">
+        <span class="tag">supply-chain</span>
+        <span class="tag">ai-agents</span>
+        <span class="tag">security</span>
+        <span class="tag">CVE</span>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <h2><a href="/blog/v050-trust-layer.html">v0.5.0: The Trust Layer for AI Agents, Wherever They Run</a></h2>
+      <div class="post-meta">February 19, 2026 · 3 min read</div>
+      <p class="post-desc">Origin Fortress v0.5.0 goes beyond laptop security. Credential file monitoring, skill integrity checking, network egress logging, inter-agent message scanning (10 attack patterns), and a full alert delivery system. Informed by research from Cisco, Snyk, SecurityScorecard, and Permiso — because 13.4% of ClawHub skills have critical issues and 135K instances are exposed. 128 tests, zero dependencies.</p>
+      <div class="tags">
+        <span class="tag">release</span>
+        <span class="tag">v0.5.0</span>
+        <span class="tag">security</span>
+        <span class="tag">inter-agent</span>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <h2><a href="/blog/securing-ai-agents.html">Your AI Agent Has Shell Access. Here's How to Secure It.</a></h2>
+      <div class="post-meta">February 13, 2026 · 4 min read</div>
+      <p class="post-desc">AI agents now have shell, browser, and email access. CrowdStrike, Cisco, and OWASP all flagged the risks this month. Here's an open-source security layer to protect your agents at runtime.</p>
+      <div class="tags">
+        <span class="tag">security</span>
+        <span class="tag">ai</span>
+        <span class="tag">opensource</span>
+        <span class="tag">node</span>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <h2><a href="/blog/owasp-agentic-ai-top10.html">OWASP Top 10 for Agentic AI: What It Means for Your AI Agent</a></h2>
+      <div class="post-meta">February 13, 2026 · 6 min read</div>
+      <p class="post-desc">OWASP released a dedicated Top 10 for Agentic AI in 2026. We break down all 10 risks and show how Origin Fortress addresses each one.</p>
+      <div class="tags">
+        <span class="tag">security</span>
+        <span class="tag">ai</span>
+        <span class="tag">owasp</span>
+        <span class="tag">opensource</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+<div class="container">
+  <div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:16px">
+    <a href="https://github.com/darfaz/origin-fortress" style="color:var(--gray)">GitHub</a>
+    <a href="https://www.npmjs.com/package/origin-fortress" style="color:var(--gray)">npm</a>
+    <a href="/blog/" style="color:var(--gray)">Blog</a>
+    <a href="mailto:hello@origin-fortress.com" style="color:var(--gray)">hello@origin-fortress.com</a>
+  </div>
+  <p style="text-align:center;color:var(--gray);font-size:.85rem">© 2026 Origin Fortress</p>
+</div>
+</footer>
+</body>
+</html>

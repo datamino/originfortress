@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Origin Fortress vs LlamaFirewall vs NeMo Guardrails — Which AI Agent Security Tool? | Origin Fortress Blog</title>
+<meta name="description" content="Detailed comparison of Origin Fortress, Meta's LlamaFirewall, and NVIDIA's NeMo Guardrails. Which open-source AI agent security tool should you use?">
+<meta property="og:title" content="Origin Fortress vs LlamaFirewall vs NeMo Guardrails">
+<meta property="og:description" content="Three open-source tools, three different approaches to AI agent security. Here's how to choose.">
+<link rel="canonical" href="https://origin-fortress.com/blog/origin-fortress-vs-llamafirewall-nemo-guardrails">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0F172A;color:#F8FAFC;line-height:1.8}
+a{color:#3B82F6}
+.container{max-width:760px;margin:0 auto;padding:40px 24px}
+nav{background:rgba(15,23,42,.95);padding:16px 24px;position:fixed;top:0;left:0;right:0;z-index:100;border-bottom:1px solid rgba(59,130,246,.15)}
+nav a{color:#94A3B8;text-decoration:none;margin-right:24px;font-size:.9rem}
+nav a:first-child{color:#F8FAFC;font-weight:700;font-size:1.1rem}
+article{padding-top:80px}
+h1{font-size:2.2rem;font-weight:800;line-height:1.2;margin-bottom:16px;letter-spacing:-.02em}
+h2{font-size:1.5rem;font-weight:700;margin:48px 0 16px;color:#10B981}
+h3{font-size:1.2rem;margin:32px 0 12px}
+p{margin-bottom:16px;color:#CBD5E1}
+.meta{color:#64748B;font-size:.9rem;margin-bottom:40px}
+table{width:100%;border-collapse:collapse;margin:24px 0;font-size:.9rem}
+th{text-align:left;padding:12px;border-bottom:2px solid #334155;color:#94A3B8;font-weight:600}
+td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.06)}
+.yes{color:#10B981}
+.no{color:#EF4444}
+code{background:#1E293B;padding:2px 8px;border-radius:4px;font-size:.85rem}
+pre{background:#0a0e17;border:1px solid #334155;border-radius:10px;padding:20px;overflow-x:auto;margin:20px 0;font-size:.85rem;line-height:1.6}
+blockquote{border-left:3px solid #3B82F6;padding:12px 20px;margin:20px 0;background:#1E293B;border-radius:0 8px 8px 0;font-style:italic}
+.cta{background:#1E293B;border:1px solid rgba(59,130,246,.3);border-radius:14px;padding:32px;text-align:center;margin:48px 0}
+.cta h3{color:#F8FAFC;margin:0 0 12px}
+.cta code{font-size:1rem;background:#0a0e17;padding:8px 16px}
+.btn{display:inline-block;padding:12px 28px;background:#3B82F6;color:#fff;border-radius:8px;text-decoration:none;font-weight:600;margin:8px}
+.btn:hover{background:#2563EB}
+</style>
+</head>
+<body>
+<nav>
+<div class="container">
+  <a href="/" class="logo">🏰 Claw<span>Moat</span></a>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+  <div class="nav-links">
+    <a href="/">Security</a>
+    <a href="/services/">AI Agents</a>
+    <a href="/blog/">Blog</a>
+    <a href="https://github.com/darfaz/origin-fortress">GitHub ↗</a>
+  </div>
+</div>
+</nav>
+<div class="container">
+<article>
+<h1>Origin Fortress vs LlamaFirewall vs NeMo Guardrails: Which Open-Source AI Agent Security Tool?</h1>
+<div class="meta">February 25, 2026 · 8 min read · By Dar Fazulyanov</div>
+
+<p>Three open-source projects. Three very different approaches to securing AI agents. If you're running AI agents in production (or on your laptop), you need to understand what each one actually does — because they solve fundamentally different problems.</p>
+
+<h2>The Quick Answer</h2>
+
+<table>
+<thead>
+<tr><th></th><th>Origin Fortress</th><th>LlamaFirewall</th><th>NeMo Guardrails</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Maker</strong></td><td>Open source</td><td>Meta</td><td>NVIDIA</td></tr>
+<tr><td><strong>Language</strong></td><td>Node.js</td><td>Python</td><td>Python</td></tr>
+<tr><td><strong>Focus</strong></td><td>Host protection</td><td>Prompt/agent safety</td><td>Conversational guardrails</td></tr>
+<tr><td><strong>Dependencies</strong></td><td>Zero</td><td>PyTorch, transformers</td><td>Multiple</td></tr>
+<tr><td><strong>Protects</strong></td><td>Your machine</td><td>Your model</td><td>Your conversations</td></tr>
+<tr><td><strong>Credential monitoring</strong></td><td class="yes">✅</td><td class="no">❌</td><td class="no">❌</td></tr>
+<tr><td><strong>Permission tiers</strong></td><td class="yes">✅</td><td class="no">❌</td><td class="no">❌</td></tr>
+<tr><td><strong>Skill/plugin auditing</strong></td><td class="yes">✅</td><td class="no">❌</td><td class="no">❌</td></tr>
+<tr><td><strong>Prompt injection</strong></td><td class="yes">✅</td><td class="yes">✅</td><td class="yes">✅</td></tr>
+<tr><td><strong>Setup time</strong></td><td>30 seconds</td><td>~30 minutes</td><td>~15 minutes</td></tr>
+<tr><td><strong>License</strong></td><td>MIT</td><td>MIT</td><td>Apache 2.0</td></tr>
+</tbody>
+</table>
+
+<h2>LlamaFirewall (Meta)</h2>
+
+<p>Released May 2025, LlamaFirewall is Meta's open-source guardrail framework. It's serious engineering — used in production at Meta itself. Three main components:</p>
+
+<ul style="margin:16px 0;padding-left:24px;color:#CBD5E1">
+<li><strong>PromptGuard 2</strong> — A fine-tuned classifier that detects prompt injection and jailbreak attempts with high accuracy</li>
+<li><strong>AlignmentCheck</strong> — Uses an LLM judge to verify agent actions align with their intended goals</li>
+<li><strong>CodeShield</strong> — Scans generated code for security vulnerabilities before execution</li>
+</ul>
+
+<p><strong>Strengths:</strong> State-of-the-art prompt injection detection. Meta's research backing. Production-proven at massive scale. The PromptGuard 2 model is genuinely impressive.</p>
+
+<p><strong>Weaknesses:</strong> Python-only. Requires PyTorch and ML model downloads (heavy). Focused on the model/prompt layer — doesn't know or care about your filesystem, credentials, or installed plugins.</p>
+
+<p><strong>Best for:</strong> Teams building LLM applications who need the best possible prompt injection and jailbreak detection.</p>
+
+<h2>NeMo Guardrails (NVIDIA)</h2>
+
+<p>NVIDIA's framework for adding programmable guardrails to LLM-based conversational systems. Think of it as a policy layer for chatbots and assistants.</p>
+
+<ul style="margin:16px 0;padding-left:24px;color:#CBD5E1">
+<li>Topical guardrails (keep conversations on-track)</li>
+<li>Safety guardrails (content moderation)</li>
+<li>Hallucination detection and fact-checking</li>
+<li>Custom flows using Colang (their domain-specific language)</li>
+</ul>
+
+<p><strong>Strengths:</strong> Extremely flexible. Colang lets you define complex conversational policies. Great integration with the NVIDIA AI ecosystem.</p>
+
+<p><strong>Weaknesses:</strong> Designed for conversational AI, not autonomous agents. Steep learning curve (Colang is its own language). Heavy dependency chain.</p>
+
+<p><strong>Best for:</strong> Teams building customer-facing chatbots and copilots who need content safety and conversation control.</p>
+
+<h2>Origin Fortress</h2>
+
+<p>Origin Fortress protects a fundamentally different layer: <strong>the host machine itself</strong>. If you're running AI agents on your laptop, a dedicated machine, or in the cloud, Origin Fortress is the security layer between the agent and your operating system.</p>
+
+<ul style="margin:16px 0;padding-left:24px;color:#CBD5E1">
+<li><strong>Host Guardian</strong> — 4 permission tiers (observer → full), enforced at runtime</li>
+<li><strong>Forbidden zones</strong> — Auto-protects SSH keys, AWS creds, crypto wallets, browser data</li>
+<li><strong>Credential monitoring</strong> — Watches sensitive directories for unauthorized access</li>
+<li><strong>Skill integrity checking</strong> — Hash-based verification + suspicious pattern detection for installed plugins</li>
+<li><strong>Network egress logging</strong> — See exactly where your agent sends data</li>
+<li><strong>Plus:</strong> Prompt injection scanning, policy engine, audit trails</li>
+</ul>
+
+<p><strong>Strengths:</strong> Only tool protecting the host layer. Zero dependencies. Sub-millisecond scanning. Installs in seconds. Node.js native (where most AI agent frameworks run).</p>
+
+<p><strong>Weaknesses:</strong> Prompt injection detection is pattern-based + heuristic, not ML-based (lighter but less sophisticated than PromptGuard 2). No conversational guardrails.</p>
+
+<p><strong>Best for:</strong> Anyone running AI agents that have shell access, file system access, or credential access — especially on personal machines or shared infrastructure.</p>
+
+<h2>The Real Insight: These Solve Different Problems</h2>
+
+<p>The industry is (correctly) obsessed with prompt injection. But there's a gap nobody's talking about:</p>
+
+<blockquote>
+<p>Your agent can read ~/.ssh/id_rsa right now. No prompt injection required — it already has permission.</p>
+</blockquote>
+
+<p>LlamaFirewall asks: "Is this prompt trying to hijack the agent?"<br>
+NeMo Guardrails asks: "Is this conversation staying on topic?"<br>
+Origin Fortress asks: "Should this agent be allowed to access this file / run this command / talk to this server?"</p>
+
+<p>They're complementary. The best security posture uses multiple layers:</p>
+
+<ol style="margin:16px 0;padding-left:24px;color:#CBD5E1">
+<li><strong>Prompt layer:</strong> LlamaFirewall or similar to catch injection attempts</li>
+<li><strong>Conversation layer:</strong> NeMo Guardrails for content safety (if applicable)</li>
+<li><strong>Host layer:</strong> Origin Fortress to enforce what the agent can actually DO</li>
+</ol>
+
+<h2>Decision Matrix</h2>
+
+<table>
+<thead>
+<tr><th>If you need...</th><th>Use</th></tr>
+</thead>
+<tbody>
+<tr><td>Best-in-class prompt injection detection</td><td>LlamaFirewall</td></tr>
+<tr><td>Conversational safety for chatbots</td><td>NeMo Guardrails</td></tr>
+<tr><td>Protect your machine from your own agent</td><td>Origin Fortress</td></tr>
+<tr><td>Runtime permission control for agents</td><td>Origin Fortress</td></tr>
+<tr><td>Credential and filesystem monitoring</td><td>Origin Fortress</td></tr>
+<tr><td>Supply chain security for agent plugins</td><td>Origin Fortress</td></tr>
+<tr><td>Comprehensive defense-in-depth</td><td>All three</td></tr>
+</tbody>
+</table>
+
+<h2>Update: The Ecosystem Just Got Bigger (Feb 26)</h2>
+
+<p>Since we first published this comparison, three new players have entered the OpenClaw security space:</p>
+
+<h3>Runlayer — Enterprise SaaS</h3>
+<p><a href="https://venturebeat.com/orchestration/runlayer-is-now-offering-secure-openclaw-agentic-capabilities-for-large">Covered by VentureBeat</a>. NYC startup offering "OpenClaw for Enterprise" with ToolGuard (real-time blocking, &lt;100ms latency) and OpenClaw Watch (shadow AI discovery via MDM). Claims 8.7% → 95% prompt injection resistance. Integrates with Okta and Entra. <strong>Closed source, enterprise pricing.</strong></p>
+
+<h3>Crittora — Cryptographic Policy Enforcement</h3>
+<p>Announced via <a href="https://finance.yahoo.com/news/crittora-makes-openclaw-enterprise-ready-155800602.html">Yahoo Finance PR</a>. Cryptographically enforced policy framework for OpenClaw. Targets enterprise compliance. <strong>Different approach — policy signatures, not host protection.</strong></p>
+
+<h3>KiloClaw (Kilo.ai) — Managed Hosting</h3>
+<p><a href="https://venturebeat.com/orchestration/kilo-launches-kiloclaw-allowing-anyone-to-deploy-hosted-openclaw-agents-into">Covered by VentureBeat</a>. Backed by GitLab co-founder. Deploy OpenClaw on managed VMs (Fly.io) in 60 seconds. Handles the "3am crash" problem with always-on monitoring. <strong>Hosting solution, not a security tool — complementary to Origin Fortress.</strong></p>
+
+<h3>Updated Comparison</h3>
+<table>
+<thead>
+<tr><th>Tool</th><th>Layer</th><th>Open Source?</th><th>Host Protection?</th><th>Target</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Origin Fortress</strong></td><td>Host / OS</td><td>✅ MIT</td><td>✅</td><td>Everyone (free core)</td></tr>
+<tr><td>LlamaFirewall</td><td>Model / Prompt</td><td>✅ MIT</td><td>❌</td><td>ML teams</td></tr>
+<tr><td>NeMo Guardrails</td><td>Conversation</td><td>✅ Apache 2</td><td>❌</td><td>Chatbot builders</td></tr>
+<tr><td>Runlayer</td><td>Enterprise Governance</td><td>❌ Proprietary</td><td>Partial</td><td>Large enterprises</td></tr>
+<tr><td>Crittora</td><td>Policy / Crypto</td><td>❌ Proprietary</td><td>❌</td><td>Compliance teams</td></tr>
+<tr><td>KiloClaw</td><td>Managed Hosting</td><td>❌ Proprietary</td><td>❌ (VM isolation)</td><td>Developers / SMBs</td></tr>
+</tbody>
+</table>
+
+<p><strong>Key insight:</strong> <a href="https://www.microsoft.com/en-us/security/blog/2026/02/19/running-openclaw-safely-identity-isolation-runtime-risk/">Microsoft's security team says</a> OpenClaw is "not appropriate for standard workstations." Runlayer and KiloClaw solve this by moving agents off your machine. Origin Fortress solves it by securing agents <em>on</em> your machine. Different philosophies — and for anyone who wants to keep running agents locally, Origin Fortress is the only open-source option.</p>
+
+<h2>Getting Started</h2>
+
+<pre><code># Origin Fortress — 30 seconds to host protection
+npm install -g origin-fortress
+origin-fortress scan ~/.openclaw/
+origin-fortress skill-audit ~/.openclaw/skills/
+origin-fortress report
+
+# LlamaFirewall — model-layer security
+pip install llamafirewall
+# Requires model downloads (~2GB)
+
+# NeMo Guardrails — conversational safety
+pip install nemoguardrails
+# Requires configuration files + Colang</code></pre>
+
+<div class="cta">
+<h3>Try Origin Fortress</h3>
+<p style="color:#94A3B8;margin-bottom:16px">Zero dependencies. MIT licensed. 142 tests passing.</p>
+<code>npm install -g origin-fortress</code>
+<br><br>
+<a href="https://github.com/darfaz/origin-fortress" class="btn">⭐ Star on GitHub</a>
+<a href="https://origin-fortress.com/#pricing" class="btn" style="background:#10B981">See Plans</a>
+</div>
+
+<p style="font-size:.85rem;color:#64748B;margin-top:40px">This comparison was written in February 2026. All three projects are actively developed — check their repos for the latest features.</p>
+</article>
+</div>
+</body>
+</html>

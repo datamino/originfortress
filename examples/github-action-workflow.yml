@@ -1,0 +1,94 @@
+# Origin Fortress CI/CD Integration Examples
+# Add this to your repo's .github/workflows/ directory
+#
+# Example 1: Scan PR diffs for prompt injection & secret leaks
+# Example 2: Scan agent config files before deployment
+# Example 3: Full project scan on push to main
+
+# ─── Example 1: PR Security Scan ─────────────────────────────────
+name: Origin Fortress Security Scan
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  origin-fortress-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Origin Fortress
+        run: npm install -g origin-fortress
+
+      # Scan all text/config files for prompt injection, secrets, PII
+      - name: Scan for threats
+        run: |
+          echo "## 🏰 Origin Fortress Security Scan" >> $GITHUB_STEP_SUMMARY
+
+          # Scan changed files in PR
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} HEAD -- '*.md' '*.yml' '*.yaml' '*.json' '*.txt' '*.env*' '*.js' '*.ts' '*.py')
+          else
+            FILES=$(find . -type f \( -name "*.md" -o -name "*.yml" -o -name "*.yaml" -o -name "*.json" -o -name "*.js" -o -name "*.ts" -o -name "*.py" \) -not -path "*/node_modules/*" -not -path "*/.git/*")
+          fi
+
+          FOUND_ISSUES=0
+          for file in $FILES; do
+            if [ -f "$file" ]; then
+              RESULT=$(origin-fortress scan "$file" --format json 2>/dev/null || true)
+              if echo "$RESULT" | grep -q '"blocked":true'; then
+                echo "⛔ **BLOCKED** — $file" >> $GITHUB_STEP_SUMMARY
+                echo "$RESULT" | jq -r '.findings[] | "  - \(.severity): \(.type)/\(.subtype)"' >> $GITHUB_STEP_SUMMARY 2>/dev/null
+                FOUND_ISSUES=1
+              fi
+            fi
+          done
+
+          if [ "$FOUND_ISSUES" = "1" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "❌ Security issues found. Review above findings." >> $GITHUB_STEP_SUMMARY
+            exit 1
+          else
+            echo "✅ No security issues found." >> $GITHUB_STEP_SUMMARY
+          fi
+
+      # Scan OpenClaw skills if present
+      - name: Scan skills (supply chain)
+        if: always()
+        run: |
+          if [ -d "skills/" ]; then
+            origin-fortress audit skills/ --format summary >> $GITHUB_STEP_SUMMARY
+          fi
+
+# ─── Example 2: Pre-deployment Agent Config Scan ─────────────────
+# Uncomment and adapt for your deployment pipeline:
+#
+# deploy-scan:
+#   runs-on: ubuntu-latest
+#   steps:
+#     - uses: actions/checkout@v4
+#     - uses: actions/setup-node@v4
+#       with: { node-version: '20' }
+#     - run: npm install -g origin-fortress
+#     - name: Validate agent configs
+#       run: |
+#         # Scan YAML configs for dangerous patterns
+#         for f in config/*.yml agents/*.yml; do
+#           origin-fortress scan "$f" --fail-on high
+#         done
+#     - name: Scan prompts for injection
+#       run: |
+#         # Scan prompt templates
+#         for f in prompts/*.md prompts/*.txt; do
+#           origin-fortress scan "$f" --fail-on critical
+#         done

@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Origin Fortress — The Security Layer Between AI Agents and Your Machine</title>
+<meta name="description" content="The only open-source tool that protects your SSH keys, credentials, and file system from AI agents. Host-level security with permission tiers, forbidden zones, and full audit trails. Zero dependencies.">
+<link rel="canonical" href="https://origin-fortress.com/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Origin Fortress — They Protect the Model. We Protect Your Machine.">
+<meta property="og:description" content="The only open-source security layer that guards your SSH keys, credentials, and file system from AI agents. Permission tiers, forbidden zones, audit trails. One npm install.">
+<meta property="og:image" content="https://origin-fortress.com/og-image.png">
+<meta property="og:url" content="https://origin-fortress.com">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Origin Fortress — They Protect the Model. We Protect Your Machine.">
+<meta name="twitter:description" content="The only open-source security layer that guards your SSH keys, credentials, and file system from AI agents. Permission tiers, forbidden zones, audit trails.">
+<meta name="twitter:image" content="https://origin-fortress.com/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Origin Fortress",
+  "applicationCategory": "SecurityApplication",
+  "operatingSystem": "Node.js",
+  "description": "The trust layer for AI agents — laptop, dedicated machine, or cloud. Runtime security, credential monitoring, skill integrity checking, and full audit trails.",
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Free",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "Open source Host Guardian, scanners & CLI"
+    },
+    {
+      "@type": "Offer",
+      "name": "Pro",
+      "price": "14.99",
+      "priceCurrency": "USD",
+      "description": "Threat intelligence, persistent audit logs, dashboard, real-time alerts"
+    },
+    {
+      "@type": "Offer",
+      "name": "Team",
+      "price": "49",
+      "priceCurrency": "USD",
+      "description": "Fleet dashboard, centralized policy, compliance reports"
+    }
+  ],
+  "url": "https://origin-fortress.com",
+  "author": {
+    "@type": "Organization",
+    "name": "Origin Fortress"
+  },
+  "license": "https://opensource.org/licenses/MIT"
+}
+</script>
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏰</text></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0F172A;--navy-light:#1E293B;--navy-mid:#334155;--blue:#3B82F6;--emerald:#10B981;--white:#F8FAFC;--gray:#94A3B8;--red:#EF4444;--amber:#F59E0B}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--navy);color:var(--white);line-height:1.6;overflow-x:hidden}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1140px;margin:0 auto;padding:0 24px}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,23,42,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(59,130,246,.15);padding:16px 0}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:1.25rem;font-weight:700;display:flex;align-items:center;gap:8px;color:var(--white);margin-right:40px;flex-shrink:0}
+.logo span{color:var(--emerald)}
+.logo img{height:44px;width:auto}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{color:var(--gray);font-size:.9rem;transition:color .2s}
+.nav-links a:hover{color:var(--white);text-decoration:none}
+.nav-links .btn-sm{color:var(--navy);background:var(--emerald);padding:6px 28px;border-radius:20px;font-weight:600;font-size:.85rem;white-space:nowrap}
+.nav-links .btn-sm:hover{opacity:.9}
+.menu-toggle{display:none;background:none;border:none;color:var(--white);font-size:1.5rem;cursor:pointer}
+
+/* Hero */
+.hero{padding:160px 0 100px;text-align:center;position:relative;overflow:hidden}
+.hero-video-container{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0}
+.hero-video{width:100%;height:100%;object-fit:cover;opacity:.5;filter:brightness(1.3)}
+.hero-video-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,rgba(15,23,42,.35) 0%,rgba(15,23,42,.65) 50%,rgba(15,23,42,.95) 100%)}
+.hero .container{position:relative;z-index:1}
+.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(59,130,246,.12) 0%,transparent 70%);pointer-events:none;z-index:1}
+.hero h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:800;line-height:1.1;margin-bottom:24px;letter-spacing:-.03em}
+.hero h1 .highlight{background:linear-gradient(135deg,var(--blue),var(--emerald));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:1.2rem;color:var(--gray);max-width:640px;margin:0 auto 40px}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:10px;font-weight:600;font-size:1rem;transition:all .2s;border:none;cursor:pointer}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:#2563EB;text-decoration:none}
+.btn-outline{background:transparent;color:var(--white);border:1.5px solid var(--navy-mid)}
+.btn-outline:hover{border-color:var(--blue);text-decoration:none}
+.hero-badges{margin-top:48px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;font-size:.85rem;color:var(--gray)}
+.hero-badges span{display:flex;align-items:center;gap:6px;background:var(--navy-light);padding:6px 14px;border-radius:20px;border:1px solid rgba(255,255,255,.06)}
+
+/* Sections */
+section{padding:100px 0}
+.section-label{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--emerald);margin-bottom:12px}
+.section-title{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;margin-bottom:16px;letter-spacing:-.02em}
+.section-sub{color:var(--gray);font-size:1.05rem;max-width:600px;margin-bottom:48px}
+
+/* Problem */
+.problem{background:var(--navy-light)}
+.problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.threat-card{background:var(--navy);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:28px;transition:border-color .2s}
+.threat-card:hover{border-color:var(--red)}
+.threat-card .icon{font-size:2rem;margin-bottom:12px}
+.threat-card h3{font-size:1.1rem;margin-bottom:8px}
+.threat-card p{color:var(--gray);font-size:.9rem}
+
+/* Deployment Models */
+.deploy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.deploy-card{background:var(--navy-light);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:32px;text-align:center;transition:border-color .2s}
+.deploy-card:hover{border-color:var(--emerald)}
+.deploy-card .deploy-icon{font-size:3rem;margin-bottom:16px}
+.deploy-card .deploy-analogy{font-size:1rem;font-weight:700;color:var(--emerald);margin-bottom:8px}
+.deploy-card h3{font-size:1.2rem;margin-bottom:12px}
+.deploy-card p{color:var(--gray);font-size:.9rem;text-align:left}
+.deploy-card ul{list-style:none;text-align:left;margin-top:16px;font-size:.85rem;color:var(--gray)}
+.deploy-card li{padding:4px 0}
+.deploy-card li::before{content:'✓ ';color:var(--emerald);font-weight:700}
+
+/* How it works */
+.pipeline{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;margin-bottom:48px}
+.pipe-step{background:var(--navy-light);border:1px solid rgba(59,130,246,.2);border-radius:14px;padding:24px 28px;text-align:center;min-width:180px;position:relative}
+.pipe-step .num{width:32px;height:32px;background:var(--blue);color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;margin-bottom:10px}
+.pipe-step h4{font-size:1rem;margin-bottom:4px}
+.pipe-step p{font-size:.8rem;color:var(--gray)}
+.pipe-arrow{font-size:1.5rem;color:var(--blue);padding:0 12px}
+@media(max-width:700px){.pipe-arrow{transform:rotate(90deg);padding:8px 0}}
+
+/* Features */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.feature-card{background:var(--navy-light);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:28px;transition:transform .2s,border-color .2s}
+.feature-card:hover{transform:translateY(-2px);border-color:var(--blue)}
+.feature-card .icon{font-size:1.6rem;margin-bottom:12px}
+.feature-card h3{font-size:1.05rem;margin-bottom:8px}
+.feature-card p{color:var(--gray);font-size:.9rem}
+.feature-card .tag{display:inline-block;margin-top:12px;font-size:.75rem;padding:3px 10px;border-radius:12px;font-weight:600}
+.tag-live{background:rgba(16,185,129,.15);color:var(--emerald)}
+.tag-soon{background:rgba(59,130,246,.15);color:var(--blue)}
+
+/* Terminal Demo */
+.demo{background:var(--navy-light)}
+.terminal{max-width:720px;margin:0 auto;background:#0a0e17;border:1px solid var(--navy-mid);border-radius:14px;overflow:hidden;font-family:'SF Mono',Consolas,monospace;font-size:.85rem;line-height:1.7}
+.terminal-bar{background:var(--navy);padding:10px 16px;display:flex;gap:8px;align-items:center}
+.terminal-dot{width:12px;height:12px;border-radius:50%}
+.terminal-bar span:nth-child(1){background:#EF4444}
+.terminal-bar span:nth-child(2){background:#F59E0B}
+.terminal-bar span:nth-child(3){background:#10B981}
+.terminal-title{color:var(--gray);font-size:.75rem;margin-left:12px}
+.terminal-body{padding:20px;overflow-x:auto}
+.terminal-body .prompt{color:var(--emerald)}
+.terminal-body .cmd{color:var(--white)}
+.terminal-body .output{color:var(--gray)}
+.terminal-body .danger{color:var(--red)}
+.terminal-body .safe{color:var(--emerald)}
+.terminal-body .info{color:var(--blue)}
+
+/* Permission Tiers */
+.tiers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px}
+@media(max-width:768px){.tiers-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.tiers-grid{grid-template-columns:1fr}}
+.tier-card{background:var(--navy);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:24px;text-align:center;transition:border-color .2s}
+.tier-card:hover{border-color:var(--emerald)}
+.tier-card .tier-icon{font-size:2.5rem;margin-bottom:12px}
+.tier-card h3{font-size:1.1rem;margin-bottom:4px}
+.tier-card .tier-level{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--emerald);margin-bottom:12px}
+.tier-card ul{list-style:none;text-align:left;font-size:.85rem;color:var(--gray)}
+.tier-card li{padding:3px 0}
+.tier-card li::before{content:'✓ ';color:var(--emerald);font-weight:700}
+.tier-card li.blocked::before{content:'✗ ';color:var(--red)}
+.tier-card li.blocked{color:var(--red);opacity:.7}
+
+/* Forbidden Zones */
+.zones-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:32px}
+.zone-card{background:var(--navy);border:1px solid rgba(239,68,68,.2);border-radius:14px;padding:20px;text-align:center;transition:border-color .2s}
+.zone-card:hover{border-color:var(--red)}
+.zone-card .zone-icon{font-size:2rem;margin-bottom:8px}
+.zone-card h4{font-size:.95rem;margin-bottom:4px}
+.zone-card code{font-size:.75rem;color:var(--red);background:rgba(239,68,68,.1);padding:2px 8px;border-radius:4px}
+
+/* Pricing */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px}
+.price-card{background:var(--navy-light);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:32px;display:flex;flex-direction:column}
+.price-card.popular{border-color:var(--blue);position:relative}
+.price-card.popular::before{content:'Most Popular';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;padding:4px 16px;border-radius:20px;font-size:.75rem;font-weight:700}
+.price-card h3{font-size:1.1rem;margin-bottom:4px}
+.price-card .price{font-size:2.2rem;font-weight:800;margin:12px 0 4px}
+.price-card .price span{font-size:.9rem;font-weight:400;color:var(--gray)}
+.price-card .desc{color:var(--gray);font-size:.85rem;margin-bottom:20px}
+.price-card ul{list-style:none;flex:1;margin-bottom:24px}
+.price-card li{padding:6px 0;font-size:.9rem;color:var(--gray)}
+.price-card li::before{content:'✓ ';color:var(--emerald);font-weight:700}
+.price-card .btn{width:100%;justify-content:center;text-align:center}
+
+/* Open Source */
+.oss{background:var(--navy-light)}
+.oss-box{text-align:center;max-width:640px;margin:0 auto}
+.install-cmd{background:#0a0e17;border:1px solid var(--navy-mid);border-radius:10px;padding:16px 24px;font-family:'SF Mono',Consolas,monospace;font-size:1rem;display:inline-flex;align-items:center;gap:12px;margin:24px 0}
+.install-cmd .dollar{color:var(--emerald)}
+.oss-badges{display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+.oss-badges a img{height:24px}
+
+/* CTA */
+.cta{text-align:center;position:relative}
+.cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;background:radial-gradient(circle,rgba(16,185,129,.06) 0%,transparent 70%);pointer-events:none}
+.cta-form{display:flex;gap:12px;justify-content:center;max-width:480px;margin:32px auto 0;flex-wrap:wrap}
+.cta-form input{flex:1;min-width:200px;padding:14px 18px;border-radius:10px;border:1.5px solid var(--navy-mid);background:var(--navy-light);color:var(--white);font-size:1rem;outline:none;transition:border-color .2s}
+.cta-form input:focus{border-color:var(--blue)}
+.cta-form .btn{white-space:nowrap}
+
+/* Footer */
+footer{border-top:1px solid rgba(255,255,255,.06);padding:48px 0 32px;color:var(--gray);font-size:.85rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-grid h4{color:var(--white);margin-bottom:12px;font-size:.9rem}
+.footer-grid a{display:block;color:var(--gray);padding:3px 0;transition:color .2s}
+.footer-grid a:hover{color:var(--white)}
+.footer-bottom{text-align:center;padding-top:24px;border-top:1px solid rgba(255,255,255,.06)}
+
+/* OWASP */
+.owasp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:32px}
+.owasp-item{display:flex;gap:12px;align-items:flex-start;background:var(--navy-light);padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,.06)}
+.owasp-item .code{background:rgba(59,130,246,.15);color:var(--blue);font-size:.75rem;font-weight:700;padding:4px 8px;border-radius:6px;white-space:nowrap}
+.owasp-item p{font-size:.85rem;color:var(--gray)}
+
+/* Mobile */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--navy);padding:20px;gap:16px;border-bottom:1px solid var(--navy-mid)}
+  .menu-toggle{display:block}
+  .hero{padding:120px 0 60px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .pipeline{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+<div class="container">
+  <div class="logo"><a href="/"><img src="/logo.svg" alt="Origin Fortress" style="height:44px"></a></div>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+  <div class="nav-links">
+    <a href="/">Security</a>
+    <a href="/services/">AI Agents</a>
+    <a href="/scan/">Scanner</a>
+    <a href="/playground/">Playground</a>
+    <a href="/dashboard/">Dashboard</a>
+    <a href="/blog/">Blog</a>
+    <a href="https://github.com/darfaz/origin-fortress">GitHub ↗</a>
+    <a href="mailto:hello@origin-fortress.com?subject=15-Min%20Discovery%20Call" class="btn-sm">Get Started</a>
+  </div>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+<div class="hero-video-container">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto">
+    <source src="https://videos.pexels.com/video-files/3130284/3130284-hd_1280_720_30fps.mp4" type="video/mp4">
+  </video>
+  <div class="hero-video-overlay"></div>
+</div>
+<div class="container">
+  <h1><span class="highlight">They protect the model.</span> We protect <em>your machine.</em></h1>
+  <p style="font-size:1.3rem;color:var(--white);max-width:720px;margin:0 auto 16px">The only open-source security layer that guards your SSH keys, credentials, and file system from AI agents — not just their prompts.</p>
+  <p style="font-size:1.05rem;color:var(--gray);max-width:560px;margin:0 auto 40px">One npm install. Zero dependencies. Sub-millisecond scanning. Free forever.</p>
+  <div class="install-cmd" style="margin:0 auto 32px"><span class="dollar">$</span> npm install -g origin-fortress</div>
+  <div class="hero-btns">
+    <a href="https://github.com/darfaz/origin-fortress" class="btn btn-primary">⭐ Star on GitHub</a>
+    <a href="#pricing" class="btn btn-outline">See Plans</a>
+  </div>
+  <div class="hero-badges">
+    <span><a href="https://www.npmjs.com/package/origin-fortress"><img src="https://img.shields.io/npm/v/origin-fortress?style=flat-square&color=3B82F6" alt="npm" style="height:18px;vertical-align:middle"></a></span>
+    <span>⚡ Zero Dependencies</span>
+    <span>📦 MIT License</span>
+    <span>✅ 142 Tests Passing</span>
+  </div>
+  <!-- Live Stats Ticker -->
+  <div id="stats-ticker" style="margin-top:32px;display:flex;gap:40px;justify-content:center;flex-wrap:wrap;align-items:center;opacity:0;transition:opacity .5s">
+    <div style="text-align:center">
+      <div id="stat-total" style="font-size:2.4rem;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--emerald));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">—</div>
+      <div style="font-size:.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:.05em">Total installs &amp; clones</div>
+    </div>
+    <div style="width:1px;height:40px;background:var(--navy-light)"></div>
+    <div style="text-align:center">
+      <div id="stat-stars" style="font-size:1.6rem;font-weight:800;color:var(--orange)">—</div>
+      <div style="font-size:.75rem;color:var(--gray);text-transform:uppercase;letter-spacing:.05em">⭐ GitHub stars</div>
+    </div>
+    <div style="text-align:center">
+      <div id="stat-downloads" style="font-size:1.6rem;font-weight:800;color:var(--emerald)">—</div>
+      <div style="font-size:.75rem;color:var(--gray);text-transform:uppercase;letter-spacing:.05em">📦 npm downloads</div>
+    </div>
+    <div style="text-align:center">
+      <div id="stat-clones" style="font-size:1.6rem;font-weight:800;color:var(--blue)">—</div>
+      <div style="font-size:.75rem;color:var(--gray);text-transform:uppercase;letter-spacing:.05em">🔄 Git clones</div>
+    </div>
+  </div>
+  <script>
+  (async function(){
+    try {
+      const r = await fetch('https://origin-fortress-production.up.railway.app/api/stats');
+      const s = await r.json();
+      if(s.npm_downloads_total){
+        const anim=(el,target)=>{let c=0;const step=Math.max(1,Math.ceil(target/40));const t=setInterval(()=>{c=Math.min(c+step,target);el.textContent=c.toLocaleString()+'+';if(c>=target)clearInterval(t)},25)};
+        const total = s.npm_downloads_total + (s.github_clones||0) + (s.github_forks||0);
+        anim(document.getElementById('stat-total'), total);
+        anim(document.getElementById('stat-stars'), s.github_stars);
+        anim(document.getElementById('stat-downloads'), s.npm_downloads_total);
+        anim(document.getElementById('stat-clones'), s.github_clones||0);
+        document.getElementById('stats-ticker').style.opacity='1';
+      }
+    }catch(e){}
+  })();
+  </script>
+</div>
+</section>
+
+<!-- Problem -->
+<section class="problem" id="problem">
+<div class="container">
+  <div class="section-label">The Problem</div>
+  <h2 class="section-title">You gave your AI agent root access to your life</h2>
+  <p class="section-sub">SSH keys. AWS credentials. Browser cookies. Crypto wallets. Your agent can read them all right now. One poisoned email, one malicious skill, and everything leaves through a single curl command. This isn't a hypothetical — it happened last month.</p>
+  <div class="problem-grid">
+    <div class="threat-card">
+      <div class="icon">💉</div>
+      <h3>Prompt Injection</h3>
+      <p>Cisco found OpenClaw "fails decisively" against malicious skills. Hidden instructions in emails and web pages hijack agent behavior.</p>
+    </div>
+    <div class="threat-card">
+      <div class="icon">🔓</div>
+      <h3>Secret Exfiltration</h3>
+      <p>Permiso/Rufio built a credential-stealing weather skill and mapped C2 infrastructure. Your API keys, SSH keys, and tokens are the target.</p>
+    </div>
+    <div class="threat-card">
+      <div class="icon">🔧</div>
+      <h3>Malicious Skills</h3>
+      <p>Snyk found 13.4% of ClawHub skills have critical security issues. Supply chain attacks are already happening in the agent ecosystem.</p>
+    </div>
+    <div class="threat-card">
+      <div class="icon">🌐</div>
+      <h3>Massive Exposure</h3>
+      <p><a href="https://www.oasis.security/blog/openclaw-vulnerability" style="color:var(--blue)">Any website can hijack your agent</a> (Oasis Security). 40,000+ <a href="https://www.infosecurity-magazine.com/news/researchers-40000-exposed-openclaw/" style="color:var(--blue)">exposed instances</a>. <a href="https://www.infosecurity-magazine.com/news/researchers-six-new-openclaw/" style="color:var(--blue)">6 new CVEs this week</a>. <a href="https://www.onyx.app/insights/openclaw-enterprise-evaluation-framework" style="color:var(--blue)">Enterprise readiness: 1.2/5</a>.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Social Proof -->
+<section id="proof" style="padding:60px 0">
+<div class="container" style="text-align:center">
+  <!-- Live stats from shields.io -->
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:40px">
+    <img src="https://img.shields.io/npm/dw/origin-fortress?label=npm%20downloads&color=10B981&style=for-the-badge" alt="npm downloads" height="28">
+    <img src="https://img.shields.io/github/stars/darfaz/origin-fortress?style=for-the-badge&color=3B82F6" alt="GitHub stars" height="28">
+    <img src="https://img.shields.io/badge/dependencies-0-10B981?style=for-the-badge" alt="0 dependencies" height="28">
+    <img src="https://img.shields.io/badge/scan%20time-%3C1ms-F8FAFC?style=for-the-badge" alt="<1ms scan time" height="28">
+    <img src="https://img.shields.io/badge/tests-142%20passing-10B981?style=for-the-badge" alt="142 tests passing" height="28">
+    <img src="https://img.shields.io/badge/license-MIT-3B82F6?style=for-the-badge" alt="MIT license" height="28">
+  </div>
+  <!-- Testimonials -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;max-width:900px;margin:0 auto">
+    <blockquote style="border-left:3px solid var(--emerald);padding:16px 24px;text-align:left;background:var(--navy-light);border-radius:0 10px 10px 0">
+      <p style="font-size:1rem;font-style:italic;color:var(--white);margin-bottom:8px">"My OpenClaw bot was a fan of Origin Fortress."</p>
+      <footer>
+<div class="container">
+  <div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:16px">
+    <a href="https://github.com/darfaz/origin-fortress" style="color:var(--gray)">GitHub</a>
+    <a href="https://www.npmjs.com/package/origin-fortress" style="color:var(--gray)">npm</a>
+    <a href="/blog/" style="color:var(--gray)">Blog</a>
+    <a href="mailto:hello@origin-fortress.com" style="color:var(--gray)">hello@origin-fortress.com</a>
+  </div>
+  <p style="text-align:center;color:var(--gray);font-size:.85rem">© 2026 Origin Fortress</p>
+</div>
+</footer>
+    </blockquote>
+    <blockquote style="border-left:3px solid var(--blue);padding:16px 24px;text-align:left;background:var(--navy-light);border-radius:0 10px 10px 0">
+      <p style="font-size:1rem;font-style:italic;color:var(--white);margin-bottom:8px">"The only project I've seen that protects the host, not just the prompts. This is what the ecosystem needs."</p>
+      <footer style="color:var(--gray);font-size:.85rem">— OpenClaw community member</footer>
+    </blockquote>
+  </div>
+  <div style="margin-top:32px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap;font-size:.9rem;color:var(--gray)">
+    <span>🔒 <a href="https://www.microsoft.com/en-us/security/blog/2026/02/19/running-openclaw-safely-identity-isolation-runtime-risk/" style="color:var(--blue)">Microsoft says</a> "don't run on workstations"</span>
+    <span>📊 Referenced by <a href="https://genai.owasp.org/" style="color:var(--blue)">OWASP Agentic AI</a> framework</span>
+    <span>🔬 Built on <a href="https://arxiv.org/abs/2501.13011" style="color:var(--blue)">Anthropic's agentic misalignment</a> research</span>
+  </div>
+</div>
+</section>
+
+<!-- Deployment Models -->
+<section id="deploy">
+<div class="container">
+  <div class="section-label">Where You Run Agents</div>
+  <h2 class="section-title">Your laptop. A dedicated box. The cloud. All protected.</h2>
+  <p class="section-sub">Same npm package, different deployment profiles. Pick the one that matches your setup.</p>
+  <div class="deploy-grid">
+    <div class="deploy-card">
+      <div class="deploy-icon">💻</div>
+      <div class="deploy-analogy">Your seatbelt</div>
+      <h3>Laptop (Hardened)</h3>
+      <p>For power users running agents on their personal machine. Full protection without slowing you down.</p>
+      <ul>
+        <li>Host Guardian + permission tiers</li>
+        <li>Credential file monitoring</li>
+        <li>Full audit trail</li>
+        <li>Real-time console alerts</li>
+      </ul>
+    </div>
+    <div class="deploy-card">
+      <div class="deploy-icon">🖥️</div>
+      <div class="deploy-analogy">Your dashcam</div>
+      <h3>Dedicated Machine</h3>
+      <p>For security-conscious users with a machine dedicated to running agents. Always watching, always recording.</p>
+      <ul>
+        <li>Skill integrity checking</li>
+        <li>Network egress logging</li>
+        <li>Webhook alerts</li>
+        <li>Daemon mode monitoring</li>
+      </ul>
+    </div>
+    <div class="deploy-card">
+      <div class="deploy-icon">☁️</div>
+      <div class="deploy-analogy">Your fleet management</div>
+      <h3>Cloud / VPS</h3>
+      <p>For enterprises running agent fleets. Centralized policy, inter-agent scanning, and compliance reporting.</p>
+      <ul>
+        <li>Inter-agent message scanning</li>
+        <li>Centralized policy engine</li>
+        <li>Domain allow/blocklists</li>
+        <li>Compliance reports</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Host Guardian — THE LEAD STORY -->
+<section id="guardian">
+<div class="container">
+  <div class="section-label">Host Guardian — The Mechanism</div>
+  <h2 class="section-title">Four permission tiers. Like hiring a new employee.</h2>
+  <p class="section-sub">Start at Observer (read-only). Promote to Worker when you trust it. Every action is validated against your tier in real-time — blocked actions get logged, not executed.</p>
+
+  <div class="tiers-grid">
+    <div class="tier-card">
+      <div class="tier-icon">👁️</div>
+      <div class="tier-level">Observer</div>
+      <h3>Read Only</h3>
+      <ul>
+        <li>Read files</li>
+        <li>List directories</li>
+        <li>View system info</li>
+        <li class="blocked">Write files</li>
+        <li class="blocked">Run commands</li>
+        <li class="blocked">Network access</li>
+      </ul>
+    </div>
+    <div class="tier-card">
+      <div class="tier-icon">🔨</div>
+      <div class="tier-level">Worker</div>
+      <h3>Safe Commands</h3>
+      <ul>
+        <li>Read &amp; write files</li>
+        <li>Safe shell commands</li>
+        <li>Git operations</li>
+        <li>Package managers</li>
+        <li class="blocked">Dangerous commands</li>
+        <li class="blocked">Credential access</li>
+      </ul>
+    </div>
+    <div class="tier-card" style="border-color:var(--blue)">
+      <div class="tier-icon">⚡</div>
+      <div class="tier-level">Standard</div>
+      <h3>Recommended</h3>
+      <ul>
+        <li>Most shell commands</li>
+        <li>Network requests</li>
+        <li>File system access</li>
+        <li>Forbidden zones enforced</li>
+        <li class="blocked">Credential directories</li>
+        <li class="blocked">System-level changes</li>
+      </ul>
+    </div>
+    <div class="tier-card">
+      <div class="tier-icon">🔓</div>
+      <div class="tier-level">Full</div>
+      <h3>Unrestricted</h3>
+      <ul>
+        <li>All commands</li>
+        <li>All file access</li>
+        <li>Network unrestricted</li>
+        <li>Forbidden zones still active</li>
+        <li>Full audit trail</li>
+        <li>⚠️ Use with caution</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Code Example -->
+  <div style="margin-top:48px">
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-title">host-guardian.js — usage example</span>
+      </div>
+      <div class="terminal-body">
+<span class="info">import</span> <span class="cmd">{ HostGuardian }</span> <span class="info">from</span> <span class="safe">'origin-fortress'</span><span class="cmd">;</span>
+
+<span class="output">// Initialize with a permission tier</span>
+<span class="info">const</span> <span class="cmd">guardian</span> = <span class="info">new</span> <span class="cmd">HostGuardian({</span>
+  <span class="cmd">tier:</span> <span class="safe">'standard'</span><span class="cmd">,</span>
+  <span class="cmd">forbiddenZones:</span> <span class="safe">'default'</span><span class="cmd">,</span>  <span class="output">// SSH, AWS, crypto wallets, etc.</span>
+  <span class="cmd">auditLog:</span> <span class="safe">true</span>
+<span class="cmd">});</span>
+
+<span class="output">// Validate before every agent action</span>
+<span class="info">const</span> <span class="cmd">result</span> = <span class="cmd">guardian.validate({</span>
+  <span class="cmd">action:</span> <span class="safe">'file.read'</span><span class="cmd">,</span>
+  <span class="cmd">path:</span> <span class="safe">'~/.ssh/id_rsa'</span>
+<span class="cmd">});</span>
+
+<span class="output">// result → { allowed: false, reason: 'Forbidden zone: SSH keys' }</span>
+
+<span class="info">const</span> <span class="cmd">ok</span> = <span class="cmd">guardian.validate({</span>
+  <span class="cmd">action:</span> <span class="safe">'shell.exec'</span><span class="cmd">,</span>
+  <span class="cmd">command:</span> <span class="safe">'git status'</span>
+<span class="cmd">});</span>
+
+<span class="output">// ok → { allowed: true, tier: 'standard' }</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- What We Protect — Forbidden Zones -->
+<section class="problem" id="protect">
+<div class="container">
+  <div class="section-label">Forbidden Zones</div>
+  <h2 class="section-title">These directories are off-limits. Period.</h2>
+  <p class="section-sub">Even at the highest permission tier, Origin Fortress blocks access to your most sensitive files. No override. No exceptions. No "are you sure?" — just blocked and logged.</p>
+
+  <div class="zones-grid">
+    <div class="zone-card">
+      <div class="zone-icon">🔑</div>
+      <h4>SSH Keys</h4>
+      <code>~/.ssh/*</code>
+    </div>
+    <div class="zone-card">
+      <div class="zone-icon">☁️</div>
+      <h4>AWS Credentials</h4>
+      <code>~/.aws/*</code>
+    </div>
+    <div class="zone-card">
+      <div class="zone-icon">🌐</div>
+      <h4>Browser Data</h4>
+      <code>cookies, passwords, sessions</code>
+    </div>
+    <div class="zone-card">
+      <div class="zone-icon">💰</div>
+      <h4>Crypto Wallets</h4>
+      <code>seed phrases, wallet files</code>
+    </div>
+    <div class="zone-card">
+      <div class="zone-icon">🔐</div>
+      <h4>GPG / PGP Keys</h4>
+      <code>~/.gnupg/*</code>
+    </div>
+    <div class="zone-card">
+      <div class="zone-icon">📦</div>
+      <h4>Package Tokens</h4>
+      <code>.npmrc, .pypirc, .gem</code>
+    </div>
+    <div class="zone-card">
+      <div class="zone-icon">🗄️</div>
+      <h4>Database Creds</h4>
+      <code>.pgpass, .my.cnf</code>
+    </div>
+    <div class="zone-card">
+      <div class="zone-icon">🏗️</div>
+      <h4>Cloud Configs</h4>
+      <code>~/.azure, ~/.gcloud, ~/.kube</code>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- How It Works -->
+<section id="how">
+<div class="container">
+  <div class="section-label">How It Works</div>
+  <h2 class="section-title">Three-layer defense</h2>
+  <p class="section-sub">Every message and tool call passes through Origin Fortress's scan pipeline before reaching your agent.</p>
+  <div class="pipeline">
+    <div class="pipe-step">
+      <div class="num">1</div>
+      <h4>Pattern Match</h4>
+      <p>Fast regex + heuristic filters catch known injection patterns in &lt;1ms</p>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step">
+      <div class="num">2</div>
+      <h4>ML Classifier</h4>
+      <p>Lightweight model scores semantic intent — catches obfuscated attacks</p>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step">
+      <div class="num">3</div>
+      <h4>LLM Judge</h4>
+      <p>High-confidence LLM review for ambiguous cases — maximum accuracy</p>
+    </div>
+  </div>
+  <div class="pipeline" style="margin-top:24px">
+    <div class="pipe-step" style="border-color:rgba(16,185,129,.3)">
+      <div class="num" style="background:var(--emerald)">✓</div>
+      <h4>Policy Engine</h4>
+      <p>YAML-configured rules for tool calls, file access, shell commands, and network requests</p>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step" style="border-color:rgba(16,185,129,.3)">
+      <div class="num" style="background:var(--emerald)">✓</div>
+      <h4>Audit & Alert</h4>
+      <p>Every event logged. Real-time alerts via webhook, email, or Telegram</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Features (Scanners — now supporting features) -->
+<section class="problem" id="features">
+<div class="container">
+  <div class="section-label">What It Catches</div>
+  <h2 class="section-title">8 scanners running on every message, every tool call</h2>
+  <p class="section-sub">Your agent processes hundreds of inputs per session. Each one passes through Origin Fortress before it can touch your system.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="icon">🔑</div>
+      <h3>Credential File Monitoring</h3>
+      <p>Watches ~/.openclaw/credentials/ and sensitive directories for unauthorized access. Alerts instantly if an agent touches what it shouldn't.</p>
+      <span class="tag tag-live">v0.5 — Live</span>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🔍</div>
+      <h3>Skill Integrity Checker</h3>
+      <p>Hash-based verification of installed skills plus suspicious pattern detection. Know if a skill has been tampered with or contains malicious code.</p>
+      <span class="tag tag-live">v0.5 — Live</span>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🌐</div>
+      <h3>Network Egress Logging</h3>
+      <p>URL extraction, domain allow/blocklist with 26 blocked domains out of the box. See exactly where your agent is sending data.</p>
+      <span class="tag tag-live">v0.5 — Live</span>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🤖</div>
+      <h3>Inter-Agent Message Scanning</h3>
+      <p>10 agent-specific attack patterns — impersonation, concealment, credential exfiltration, safety bypass, and more. Catches agent-to-agent attacks.</p>
+      <span class="tag tag-live">v0.5 — Live</span>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🚨</div>
+      <h3>Alert Delivery System</h3>
+      <p>Console, file, and webhook alert channels with rate limiting. Get notified your way — Slack, Discord, Telegram, or any webhook endpoint.</p>
+      <span class="tag tag-live">v0.5 — Live</span>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🛡️</div>
+      <h3>Prompt Injection Detection</h3>
+      <p>Multi-layer scanning catches injection attempts in messages, emails, and web content before they reach your agent.</p>
+      <span class="tag tag-live">v0.1 — Live</span>
+    </div>
+    <div class="feature-card">
+      <div class="icon">📋</div>
+      <h3>Policy Engine</h3>
+      <p>YAML-based rules for shell commands, file access, browser actions, and network requests. Block, allow, or require approval.</p>
+      <span class="tag tag-live">v0.1 — Live</span>
+    </div>
+    <div class="feature-card">
+      <div class="icon">📊</div>
+      <h3>Session Audit Trail</h3>
+      <p>Full audit log of every message, tool call, and policy decision. Export for compliance or investigate incidents.</p>
+      <span class="tag tag-live">v0.1 — Live</span>
+    </div>
+  </div>
+
+  <!-- OWASP -->
+  <div style="margin-top:80px">
+    <div class="section-label">Compliance</div>
+    <h2 class="section-title">OWASP Top 10 Agentic AI (2026)</h2>
+    <p class="section-sub">Mapped coverage against every risk in the OWASP Agentic AI framework.</p>
+    <div class="owasp-grid">
+      <div class="owasp-item"><span class="code">ASI01</span><div><strong>Agent Goal Hijack</strong><p>Prompt injection scanning on all inbound content</p></div></div>
+      <div class="owasp-item"><span class="code">ASI02</span><div><strong>Tool Misuse</strong><p>Policy engine validates every tool call</p></div></div>
+      <div class="owasp-item"><span class="code">ASI03</span><div><strong>Privilege Abuse</strong><p>Permission tiers &amp; Host Guardian enforce least privilege</p></div></div>
+      <div class="owasp-item"><span class="code">ASI04</span><div><strong>Supply Chain</strong><p>Skill/plugin static analysis (v0.3)</p></div></div>
+      <div class="owasp-item"><span class="code">ASI05</span><div><strong>Code Execution</strong><p>Shell command validation &amp; allowlists</p></div></div>
+      <div class="owasp-item"><span class="code">ASI06</span><div><strong>Data Leakage</strong><p>Forbidden zones + outbound PII &amp; secret scanning</p></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Demo -->
+<section class="demo" id="demo">
+<div class="container">
+  <div class="section-label">See It In Action</div>
+  <h2 class="section-title">Try Origin Fortress v0.5.0</h2>
+  <p class="section-sub">Scan skills, audit agents, and monitor in daemon mode.</p>
+  <div class="terminal">
+    <div class="terminal-bar">
+      <span class="terminal-dot"></span>
+      <span class="terminal-dot"></span>
+      <span class="terminal-dot"></span>
+      <span class="terminal-title">origin-fortress v0.5.0 — bash</span>
+    </div>
+    <div class="terminal-body">
+<span class="prompt">$</span> <span class="cmd">origin-fortress skill-audit ~/.openclaw/skills/</span>
+
+<span class="output">🏰 Origin Fortress Skill Audit</span>
+<span class="output">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+
+<span class="safe">✓ weather-skill</span><span class="output">     hash: a3f2...c891  integrity: OK</span>
+<span class="danger">✗ helper-tool</span><span class="output">       hash: MODIFIED since install</span>
+<span class="output">   <span class="danger">⛔ Suspicious: credential file access pattern</span></span>
+<span class="output">   <span class="danger">⛔ Suspicious: base64-encoded outbound URL</span></span>
+
+<span class="safe">✓ calendar-sync</span><span class="output">    hash: 7b1e...d4a0  integrity: OK</span>
+<span class="output">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+<span class="output">3 skills scanned · <span class="danger">1 flagged</span> · 26 blocked domains active</span>
+
+<span class="prompt">$</span> <span class="cmd">origin-fortress report</span>
+
+<span class="output">🏰 Origin Fortress Security Report</span>
+<span class="output">   Credential monitors:  <span class="safe">4 active</span></span>
+<span class="output">   Network egress:       <span class="safe">142 requests logged, 3 blocked</span></span>
+<span class="output">   Agent messages:       <span class="safe">89 scanned, 0 threats</span></span>
+<span class="output">   Skill integrity:      <span class="danger">1 of 12 modified</span></span>
+
+<span class="prompt">$</span> <span class="cmd">origin-fortress --daemon --alert-webhook https://hooks.slack.com/...</span>
+
+<span class="output">🏰 Origin Fortress daemon started — monitoring credentials, network, skills</span>
+<span class="output">   Alerts → webhook + console</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Badge -->
+<section id="badge">
+<div class="container">
+  <div class="section-label">Security Badge</div>
+  <h2 class="section-title">Show your security score</h2>
+  <p class="section-sub">Run an audit and add a security badge to your README — like a CI badge, but for AI agent security.</p>
+
+  <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:40px">
+    <img src="/badge/score-Aplus.svg" alt="Score A+" height="20">
+    <img src="/badge/score-A.svg" alt="Score A" height="20">
+    <img src="/badge/score-B.svg" alt="Score B" height="20">
+    <img src="/badge/score-C.svg" alt="Score C" height="20">
+    <img src="/badge/score-D.svg" alt="Score D" height="20">
+    <img src="/badge/score-F.svg" alt="Score F" height="20">
+  </div>
+
+  <div class="terminal" style="max-width:720px;margin:0 auto">
+    <div class="terminal-bar">
+      <span class="terminal-dot"></span>
+      <span class="terminal-dot"></span>
+      <span class="terminal-dot"></span>
+      <span class="terminal-title">origin-fortress — badge</span>
+    </div>
+    <div class="terminal-body">
+<span class="prompt">$</span> <span class="cmd">origin-fortress audit --badge</span>
+
+<span class="output">🏰 Origin Fortress Session Audit</span>
+<span class="safe">✓ session-001.jsonl</span><span class="output">: clean</span>
+<span class="safe">✓ session-002.jsonl</span><span class="output">: clean</span>
+
+<span class="output">Summary: 2 sessions scanned, 0 total findings</span>
+
+<span class="info">🏷️  Security Badge</span>
+<span class="output">   Grade: A+</span>
+<span class="output">   SVG saved: ./origin-fortress-badge.svg</span>
+
+<span class="output">   Add to README:</span>
+<span class="safe">   ![Origin Fortress Security Score](https://img.shields.io/badge/Origin Fortress-A%2B-brightgreen)</span>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:32px">
+    <p style="color:var(--gray);font-size:.9rem;max-width:480px;margin:0 auto">Badges use <a href="https://shields.io" style="color:var(--blue)">shields.io</a> URLs for README embeds, or a local SVG for custom hosting. Run <code style="background:var(--navy-light);padding:2px 8px;border-radius:4px;font-size:.85rem">origin-fortress audit --badge</code> after any audit.</p>
+  </div>
+</div>
+</section>
+
+<!-- Compare -->
+<section id="compare">
+<div class="container">
+  <div class="section-label">How We're Different</div>
+  <h2 class="section-title">The only tool protecting the host, not just the prompt</h2>
+  <p class="section-sub">Other tools scan prompts. Origin Fortress protects your entire machine — credentials, files, network, and skills.</p>
+  <div style="overflow-x:auto">
+  <table style="width:100%;border-collapse:collapse;font-size:.9rem;margin-top:32px">
+    <thead>
+      <tr style="border-bottom:2px solid var(--navy-mid)">
+        <th style="text-align:left;padding:12px 16px;color:var(--gray)">Capability</th>
+        <th style="text-align:center;padding:12px 16px;color:var(--emerald);font-weight:700">Origin Fortress</th>
+        <th style="text-align:center;padding:12px 16px;color:var(--gray)">LlamaFirewall</th>
+        <th style="text-align:center;padding:12px 16px;color:var(--gray)">NeMo Guardrails</th>
+        <th style="text-align:center;padding:12px 16px;color:var(--gray)">Lakera Guard</th>
+        <th style="text-align:center;padding:12px 16px;color:var(--gray)">SecureClaw</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+        <td style="padding:10px 16px">Prompt injection detection</td>
+        <td style="text-align:center;padding:10px;color:var(--emerald)">✅</td>
+        <td style="text-align:center;padding:10px;color:var(--emerald)">✅</td>
+        <td style="text-align:center;padding:10px;color:var(--emerald)">✅</td>
+        <td style="text-align:center;padding:10px;color:var(--emerald)">✅</td>
+        <td style="text-align:center;padding:10px;color:var(--emerald)">✅</td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+        <td style="padding:10px 16px"><strong>Host-level protection</strong></td>
+        <td style="text-align:center;padding:10px;color:var(--emerald)">✅</td>
+        <td style="text-align:center;padding:10px;color:var(--red)">❌</td>
+        <td style="text-align:center;padding:10px;color:var(--red)">❌</td>
+        <td style="text-align:center;padding:10px;color:var(--red)">❌</td>
+        <td style="text-align:center;padding:10px;color:var(--red)">❌</td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+        <td style="padding:10px 16px"><strong>Credential monitoring</strong></td>
+        <td style="text-align:center;padding:10px;color:var(--emerald)">✅</td>
+        <td style="text-align:center;padding:10px;color:var(--red)">❌</td>
+        <td style="text-align:center;padding:10px;color:var(--red)">❌</td>
+        <td style="text-align:center;padding:10px;color:var(--red)">❌</td>
+        <td style="text-align:center;padding:10px;color:var(--red)">❌</td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+        <td style="padding:10px 16px"><strong>Skill/plugin auditing</strong></td>
+        <td style="text-align:center;padding:10px;color:var(--emerald)">✅</td>
+        <td style="text-align:center;padding:10px;color:var(--red)">❌</td>
+        <td style="text-align:center;padding:10px;color:var(--red)">❌</td>
+        <td style="text-align:center;padding:10px;color:var(--red)">❌</td>
+        <td style="text-align:center;padding:10px;color:var(--emerald)">✅</td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+        <td style="padding:10px 16px"><strong>Permission tiers</strong></td>
+        <td style="text-align:center;padding:10px;color:var(--emerald)">✅</td>
+        <td style="text-align:center;padding:10px;color:var(--red)">❌</td>
+        <td style="text-align:center;padding:10px;color:var(--red)">❌</td>
+        <td style="text-align:center;padding:10px;color:var(--red)">❌</td>
+        <td style="text-align:center;padding:10px;color:var(--red)">❌</td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+        <td style="padding:10px 16px">Zero dependencies</td>
+        <td style="text-align:center;padding:10px;color:var(--emerald)">✅</td>
+        <td style="text-align:center;padding:10px;color:var(--red)">❌</td>
+        <td style="text-align:center;padding:10px;color:var(--red)">❌</td>
+        <td style="text-align:center;padding:10px">N/A (SaaS)</td>
+        <td style="text-align:center;padding:10px;color:var(--red)">❌</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+        <td style="padding:10px 16px">Open source</td>
+        <td style="text-align:center;padding:10px;color:var(--emerald)">✅ MIT</td>
+        <td style="text-align:center;padding:10px;color:var(--emerald)">✅</td>
+        <td style="text-align:center;padding:10px;color:var(--emerald)">✅</td>
+        <td style="text-align:center;padding:10px;color:var(--red)">❌</td>
+        <td style="text-align:center;padding:10px;color:var(--emerald)">✅</td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+        <td style="padding:10px 16px">Node.js native</td>
+        <td style="text-align:center;padding:10px;color:var(--emerald)">✅</td>
+        <td style="text-align:center;padding:10px">Python</td>
+        <td style="text-align:center;padding:10px">Python</td>
+        <td style="text-align:center;padding:10px">API</td>
+        <td style="text-align:center;padding:10px">Skill</td>
+      </tr>
+      <tr>
+        <td style="padding:10px 16px">Free tier</td>
+        <td style="text-align:center;padding:10px;color:var(--emerald)"><strong>Full product</strong></td>
+        <td style="text-align:center;padding:10px;color:var(--emerald)">Full</td>
+        <td style="text-align:center;padding:10px;color:var(--emerald)">Full</td>
+        <td style="text-align:center;padding:10px">Limited</td>
+        <td style="text-align:center;padding:10px;color:var(--emerald)">Full</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="text-align:center;margin-top:24px;color:var(--gray);font-size:.85rem">Origin Fortress works alongside these tools — they protect the model layer, we protect the machine layer.</p>
+</div>
+</section>
+
+<!-- Pricing -->
+<section id="pricing">
+<div class="container">
+  <div class="section-label">Pricing</div>
+  <h2 class="section-title">Free to start. Upgrade when the stakes get real.</h2>
+  <p class="section-sub">Running agents on your laptop? Free tier has you covered. Managing a fleet for your company? That's when Pro and Team earn their keep. All paid plans include a <strong>30-day free trial</strong> and <strong>14-day money-back guarantee</strong>.</p>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <h3>Free</h3>
+      <div class="price">$0</div>
+      <div class="desc">Stop worrying about your agent leaking keys or getting hijacked</div>
+      <ul>
+        <li>Host Guardian (all 4 tiers)</li>
+        <li>20+ forbidden zone patterns</li>
+        <li>Prompt injection scanning</li>
+        <li>Jailbreak detection</li>
+        <li>Secret scanning</li>
+        <li>Policy engine (YAML)</li>
+        <li>Audit trail (in-memory)</li>
+        <li>Community support</li>
+      </ul>
+      <a href="https://github.com/darfaz/origin-fortress" class="btn btn-outline">Install Free</a>
+    </div>
+    <div class="price-card">
+      <h3>Security Kit</h3>
+      <div class="price">$29</div>
+      <div class="desc">Ship agent features without security liability — own it forever</div>
+      <ul>
+        <li>Everything in Free</li>
+        <li>OpenClaw security skill</li>
+        <li>Real-time scanning</li>
+        <li>Custom policy rules</li>
+        <li>Scan history &amp; audit log</li>
+        <li>1 year of pattern updates</li>
+      </ul>
+      <a href="#" onclick="checkout('security-kit');return false" class="btn btn-primary">Buy — $29 one-time</a>
+      <p style="font-size:.75rem;color:var(--gray);margin-top:8px;text-align:center">14-day money-back guarantee</p>
+    </div>
+    <div class="price-card popular">
+      <h3>Pro</h3>
+      <div class="price">$14.99<span>/mo</span></div>
+      <div class="desc">Prove your agents are secure — dashboard, audit logs, and real-time alerts</div>
+      <ul>
+        <li>Everything in Security Kit</li>
+        <li>Threat intelligence feed</li>
+        <li>Persistent audit logs (queryable)</li>
+        <li>Real-time alerts (Telegram/Slack/Discord/email)</li>
+        <li>Security dashboard</li>
+        <li>Custom forbidden zones (YAML)</li>
+        <li>Priority pattern updates</li>
+        <li>Email support</li>
+      </ul>
+      <div style="display:flex;gap:8px;flex-direction:column">
+        <a href="#" onclick="checkout('shield-monthly');return false" class="btn btn-primary">Start free trial</a>
+        <a href="#" onclick="checkout('shield-yearly');return false" class="btn btn-outline" style="font-size:.9rem">$149/year — save 17%</a>
+      </div>
+      <p style="font-size:.75rem;color:var(--gray);margin-top:8px;text-align:center">30 days free · 14-day refund guarantee</p>
+    </div>
+    <div class="price-card">
+      <h3>Team</h3>
+      <div class="price">$49<span>/mo</span></div>
+      <div class="desc">Pass SOC2 with AI agents in production — compliance reports, fleet control, centralized policy</div>
+      <ul>
+        <li>Everything in Pro</li>
+        <li>Fleet dashboard (all machines)</li>
+        <li>Centralized policy management</li>
+        <li>Compliance reports (SOC2-style)</li>
+        <li>Shared threat intelligence</li>
+        <li>Role-based policies</li>
+        <li>Up to 10 machines</li>
+        <li>Priority support</li>
+      </ul>
+      <div style="display:flex;gap:8px;flex-direction:column">
+        <a href="#" onclick="checkout('team-monthly');return false" class="btn btn-primary">Start free trial</a>
+        <a href="#" onclick="checkout('team-yearly');return false" class="btn btn-outline" style="font-size:.9rem">$499/year — save 15%</a>
+      </div>
+      <p style="font-size:.75rem;color:var(--gray);margin-top:8px;text-align:center">30 days free · 14-day refund guarantee</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Open Source -->
+<section class="oss" id="oss">
+<div class="container">
+  <div class="oss-box">
+    <div class="section-label">Open Source</div>
+    <h2 class="section-title">Built in the open. MIT licensed.</h2>
+    <p class="section-sub" style="margin:16px auto 0">Zero dependencies. Pure Node.js. Install globally and start scanning in seconds.</p>
+    <div class="install-cmd"><span class="dollar">$</span> npm install -g origin-fortress</div>
+    <div class="oss-badges">
+      <a href="https://github.com/darfaz/origin-fortress"><img src="https://img.shields.io/github/stars/darfaz/origin-fortress?style=social" alt="GitHub stars"></a>
+      <a href="https://github.com/darfaz/origin-fortress/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
+      <a href="https://www.npmjs.com/package/origin-fortress"><img src="https://img.shields.io/npm/v/origin-fortress" alt="npm"></a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Waitlist CTA -->
+<section class="cta" id="waitlist">
+<div class="container">
+  <div class="section-label">Early Access</div>
+  <h2 class="section-title">Get Origin Fortress Pro before launch</h2>
+  <p class="section-sub" style="margin:16px auto 0">Join the waitlist for early access to the dashboard, threat intelligence feed, and team features.</p>
+  <form class="cta-form" id="waitlist-form" action="https://formsubmit.co/hello@origin-fortress.com" method="POST">
+    <input type="email" name="email" placeholder="you@company.com" required aria-label="Email">
+    <input type="hidden" name="_subject" value="🏰 New Origin Fortress Waitlist Signup">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://origin-fortress.com/thanks.html">
+    <input type="hidden" name="_template" value="table">
+    <button type="submit" class="btn btn-primary">Join Waitlist</button>
+  </form>
+  <script>
+  document.getElementById('waitlist-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=this,d=new FormData(f);
+    fetch(f.action,{method:'POST',body:d,headers:{'Accept':'application/json'}})
+    .then(function(r){if(r.ok){f.innerHTML='<p style="color:var(--emerald);font-size:1.1rem;padding:14px">🏰 You\'re on the list! We\'ll be in touch.</p>'}else{f.innerHTML='<p style="color:var(--red);padding:14px">Something went wrong. Email us at hello@origin-fortress.com</p>'}})
+    .catch(function(){f.innerHTML='<p style="color:var(--red);padding:14px">Something went wrong. Email us at hello@origin-fortress.com</p>'});
+  });
+  </script>
+</div>
+</section>
+
+<!-- Beyond Security — AI Agents Transition -->
+<section style="padding:100px 0;text-align:center;position:relative;overflow:hidden">
+<div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--emerald),var(--blue),transparent)"></div>
+<div class="container">
+  <p style="font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--emerald);margin-bottom:16px">Beyond Security</p>
+  <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:20px;letter-spacing:-.02em">We Also Deploy AI Agents<br>for Your Business</h2>
+  <p style="color:var(--gray);font-size:1.1rem;max-width:580px;margin:0 auto 16px">Your employees spend 60% of their time on tasks AI agents could handle. We build, deploy, and manage custom agents — secured with Origin Fortress from day one.</p>
+  <p style="color:var(--gray);font-size:1rem;max-width:520px;margin:0 auto 36px">Finance. Operations. Collections. Reporting. Live in days, not months.</p>
+  <a href="/services/" class="btn btn-primary" style="font-size:1.1rem;padding:16px 36px">See AI Agent Services →</a>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<div class="container">
+  <div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:16px">
+    <a href="https://github.com/darfaz/origin-fortress" style="color:var(--gray)">GitHub</a>
+    <a href="https://www.npmjs.com/package/origin-fortress" style="color:var(--gray)">npm</a>
+    <a href="/blog/" style="color:var(--gray)">Blog</a>
+    <a href="/affiliates/" style="color:var(--gray)">Affiliates</a>
+    <a href="mailto:hello@origin-fortress.com" style="color:var(--gray)">hello@origin-fortress.com</a>
+  </div>
+  <p style="text-align:center;color:var(--gray);font-size:.85rem">© 2026 Origin Fortress</p>
+</div>
+</footer>
+
+<script>
+/* Affiliate referral tracking */
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const ref = params.get('ref') || params.get('utm_medium');
+  if (ref) {
+    localStorage.setItem('origin-fortress_ref', ref);
+    localStorage.setItem('origin-fortress_ref_ts', Date.now().toString());
+  }
+})();
+function getRef() {
+  const ref = localStorage.getItem('origin-fortress_ref');
+  const ts = parseInt(localStorage.getItem('origin-fortress_ref_ts') || '0');
+  if (ref && (Date.now() - ts) < 30 * 24 * 60 * 60 * 1000) return ref;
+  return null;
+}
+
+const API_URL = 'https://origin-fortress-production.up.railway.app';
+async function checkout(plan) {
+  try {
+    const payload = { plan };
+    const ref = getRef();
+    if (ref) payload.client_reference_id = ref;
+    const res = await fetch(API_URL + '/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if (data.url) window.location.href = data.url;
+    else alert('Something went wrong. Please try again or email hello@origin-fortress.com');
+  } catch (e) {
+    alert('Something went wrong. Please try again or email hello@origin-fortress.com');
+  }
+}
+</script>
+</body>
+</html>
