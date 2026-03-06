@@ -1,7 +1,26 @@
-site/
+# Development
 test/
 .github/
+coverage/
 *.log
 .env
-coverage/
 .DS_Store
+
+# Documentation website
+docs/
+wiki/
+site/
+
+# Build artifacts
+*.tgz
+
+# Cache
+arms_cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Misc
+examples/
